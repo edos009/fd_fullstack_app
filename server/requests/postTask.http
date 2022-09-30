@@ -1,0 +1,8 @@
+POST http://localhost:5000/api/users/22/tasks HTTP/1.1
+Content-Type: application/json
+
+{
+  "content": "Smile",
+  "isDone": false,
+  "deadLine": "2023-03-03"
+}
