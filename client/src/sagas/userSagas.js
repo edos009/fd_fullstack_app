@@ -20,10 +20,11 @@ export function* getUsersSaga(action) {
   try {
     const {
       data: {
-        data: users,
+        data: {users, totalCount},
       },
     } = yield API.getAllUsers(action.payload);
-    yield put(ActionUserCreator.getUsersSuccess(users));
+    yield put(ActionUserCreator.getUsersSuccess({users}));
+    yield put(ActionUserCreator.setTotalUsersCount({totalCount}));
   } catch (error) {
     yield put(ActionUserCreator.getUsersError(error));
   }

@@ -1,9 +1,13 @@
 import React from "react";
 import { Form, Formik, Field } from "formik";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
 
-import * as ActionUserCreator from "../../actions/userCreators";
+import * as ActionUserCreator from "../../../actions/userCreators";
+import CONSTANTS from "../../../constants";
+
+const {PAGES: {LIMIT}} = CONSTANTS
+
 
 const initialValues = {
   login: "",
@@ -12,7 +16,8 @@ const initialValues = {
 };
 
 const UserForm = () => {
-  const { createUserRequest } = bindActionCreators(
+  const {offset} = useSelector(({users}) => users)
+  const { createUserRequest, getUsersRequest } = bindActionCreators(
     ActionUserCreator,
     useDispatch()
   );
@@ -21,6 +26,7 @@ const UserForm = () => {
     // console.log(values);
     createUserRequest(values);
     formicBag.resetForm();
+    getUsersRequest({limit: LIMIT, offset });
   };
   return (
     <Formik initialValues={initialValues} onSubmit={onSubmit}>

@@ -1,0 +1,21 @@
+@import "../../../common/styles/colors";
+@import "../../../common/styles/template";
+
+.users {
+  flex-grow: 1;
+  .container {
+    @extend %container;
+
+    .users_inner {
+      .users_title{
+        margin-top: 15px;
+
+        font-weight: 700;
+        font-size: 40px;
+        line-height: 1.2em;
+        text-transform: uppercase;
+        text-align: center;
+      }
+    }
+  }
+}

@@ -15,6 +15,9 @@ const CONSTANTS = {
       {text: "Identification of direct executors and bringing plans to them"},
       {text: "Recording planning results"}
     ]
+  },
+  PAGES: {
+    LIMIT: 5,
   }
 };
 

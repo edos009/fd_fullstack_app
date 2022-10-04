@@ -22,7 +22,7 @@ export const getUsersRequest = ({limit, offset}) => ({
   payload: { limit, offset },
 });
 
-export const getUsersSuccess = (users) => ({
+export const getUsersSuccess = ({ users }) => ({
   type: ACTION_TYPES.GET_USERS_SUCCESS,
   payload: { users },
 });
@@ -30,4 +30,14 @@ export const getUsersSuccess = (users) => ({
 export const getUsersError = (error) => ({
   type: ACTION_TYPES.GET_USERS_ERROR,
   payload: { error },
+});
+
+export const setTotalUsersCount = ({ totalCount }) => ({
+  type: ACTION_TYPES.SET_TOTAL_USERS_COUNT,
+  payload: { totalCount },
+});
+
+export const setOffset = (offset) => ({
+  type: ACTION_TYPES.SET_OFFSET,
+  payload: { offset },
 });
