@@ -1,0 +1,25 @@
+@import "../../common/styles/colors";
+@import "../../common/styles/template";
+
+.footer {
+  background-color: $color-lavender;
+  .container {
+    @extend %container;
+
+    .footer_inner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      height: 70px;
+
+      .footer_text{
+        color: $color-white;
+        
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 1.2em;
+      }
+    }
+  }
+}

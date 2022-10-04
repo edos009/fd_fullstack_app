@@ -1,5 +1,6 @@
 import axios from "axios";
 import FormData from "form-data";
+import qs from "query-string";
 
 const httpClient = axios.create({
   baseURL: "http://localhost:5000/api",
@@ -18,4 +19,5 @@ export const createUser = (data) => {
   });
 };
 
-export const getAllUsers = ({ limit, offset}) => httpClient.get('/users')
+export const getAllUsers = ({ limit, offset }) =>
+  httpClient.get(`/users?${qs.stringify({ limit, offset })}`);

@@ -1,0 +1,15 @@
+@import "../../common/styles/colors";
+@import "../../common/styles/template";
+
+.logo {
+  color: $color-white;
+  
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1.2em;
+  
+  &:active,
+  &:focus {
+    outline: none;
+  }
+}

@@ -4,11 +4,12 @@ const UserController = require("../controllers/user.controller");
 const TaskController = require("../controllers/task.controller");
 const { checkUser } = require("../middleware/user.mw");
 const { checkTask } = require("../middleware/task.mw");
+const { paginate } = require("../middleware/paginate.mw");
 
 const usersRouter = Router();
 
 usersRouter.post("/", upload, UserController.createUser);
-usersRouter.get("/", UserController.getUsers);
+usersRouter.get("/", paginate, UserController.getUsers);
 usersRouter.get("/:userId", checkUser, UserController.getUserById);
 usersRouter.patch("/:userId", checkUser, UserController.updateUser);
 

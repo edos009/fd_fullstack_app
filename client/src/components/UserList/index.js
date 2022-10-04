@@ -12,7 +12,7 @@ const UserList = () => {
   );
 
   useEffect(() => {
-    getUsersRequest({limit: 5, offset: 0});
+    getUsersRequest({limit: 50, offset: 0});
     // eslint-disable-next-line
   }, []);
 
@@ -21,6 +21,7 @@ const UserList = () => {
       {users.map((u) => (
         <article key={u.id}>
           <h3>{u.login}</h3>
+          {u.avatar && <img src={`http://localhost:5000/images/${u.avatar}`} alt={u.login}/>}
         </article>
       ))}
     </section>

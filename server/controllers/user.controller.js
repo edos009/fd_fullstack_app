@@ -25,7 +25,8 @@ module.exports.createUser = async (req, res, next) => {
 /* Get all Users */
 module.exports.getUsers = async (req, res, next) => {
   try {
-    const users = await User.findAll({ attributes: { exclude: ["password"] } });
+    const { pagination = {} } = req;
+    const users = await User.findAll({ attributes: { exclude: ["password"] }, ...pagination });
     if (!users) {
       next(createError(404, "Users not found!"));
     }

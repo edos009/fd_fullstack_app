@@ -1,0 +1,25 @@
+@import "../../common/styles/template";
+
+.header {
+  background-color: $color-lavender;
+  .container {
+    @extend %container;
+
+    .header_inner {
+      display: flex;
+      align-items: center;
+
+      height: 70px;
+
+      .box_theme {
+        margin-left: auto;
+
+        cursor: pointer;
+
+        .btn_theme {
+          font-size: 30px;
+        }
+      }
+    }
+  }
+}
