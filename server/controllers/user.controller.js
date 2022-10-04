@@ -6,14 +6,16 @@ const { User } = require("../models");
 module.exports.createUser = async (req, res, next) => {
   try {
     const { body } = req;
-
+    if (req.file) {
+      body.avatar = req.file.filename;
+    }
     const values = _.pick(body, ["login", "password", "avatar"]);
 
     const user = await User.create(values);
     if (!user) {
       next(createError(400, "Invalid data"));
     }
-    const userPrepare = _.omit(user.get(), ["password"]);
+    const userPrepare = _.omit(await user.get(), ["password"]);
     res.status(201).send({ data: userPrepare });
   } catch (error) {
     next(error);

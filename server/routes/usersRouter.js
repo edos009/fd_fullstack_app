@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const upload = require("../middleware/upload.mw");
+const { upload } = require("../middleware/upload.mw");
 const UserController = require("../controllers/user.controller");
 const TaskController = require("../controllers/task.controller");
 const { checkUser } = require("../middleware/user.mw");
@@ -12,11 +12,7 @@ usersRouter.get("/", UserController.getUsers);
 usersRouter.get("/:userId", checkUser, UserController.getUserById);
 usersRouter.patch("/:userId", checkUser, UserController.updateUser);
 
-usersRouter.post(
-  "/:userId/tasks",
-  checkUser,
-  TaskController.createTask
-);
+usersRouter.post("/:userId/tasks", checkUser, TaskController.createTask);
 
 usersRouter.get("/:userId/tasks", checkUser, TaskController.getTasksUser);
 usersRouter.patch(

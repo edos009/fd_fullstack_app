@@ -15,3 +15,16 @@ export function* createUserSaga(action) {
     yield put(ActionUserCreator.createUserError(error));
   }
 }
+
+export function* getUsersSaga(action) {
+  try {
+    const {
+      data: {
+        data: users,
+      },
+    } = yield API.getAllUsers(action.payload);
+    yield put(ActionUserCreator.getUsersSuccess(users));
+  } catch (error) {
+    yield put(ActionUserCreator.getUsersError(error));
+  }
+}
