@@ -18,16 +18,16 @@ export const createUserError = (error) => ({
 
 /* Get Users */
 export const getUsersRequest = ({limit, offset}) => ({
-  type: ACTION_TYPES.GET_USER_REQUEST,
+  type: ACTION_TYPES.GET_USERS_REQUEST,
   payload: { limit, offset },
 });
 
 export const getUsersSuccess = (users) => ({
-  type: ACTION_TYPES.GET_USER_SUCCESS,
+  type: ACTION_TYPES.GET_USERS_SUCCESS,
   payload: { users },
 });
 
 export const getUsersError = (error) => ({
-  type: ACTION_TYPES.GET_USER_ERROR,
+  type: ACTION_TYPES.GET_USERS_ERROR,
   payload: { error },
 });

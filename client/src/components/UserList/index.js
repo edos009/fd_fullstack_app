@@ -12,7 +12,7 @@ const UserList = () => {
   );
 
   useEffect(() => {
-    getUsersRequest();
+    getUsersRequest({limit: 5, offset: 0});
     // eslint-disable-next-line
   }, []);
 
