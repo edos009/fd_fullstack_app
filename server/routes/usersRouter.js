@@ -7,7 +7,7 @@ const { checkTask } = require("../middleware/task.mw");
 
 const usersRouter = Router();
 
-usersRouter.post("/", upload.single("avatar"), UserController.createUser);
+usersRouter.post("/", upload, UserController.createUser);
 usersRouter.get("/", UserController.getUsers);
 usersRouter.get("/:userId", checkUser, UserController.getUserById);
 usersRouter.patch("/:userId", checkUser, UserController.updateUser);
