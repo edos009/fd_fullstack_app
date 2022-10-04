@@ -18,6 +18,7 @@ const UserForm = () => {
   );
 
   const onSubmit = (values, formicBag) => {
+    // console.log(values);
     createUserRequest(values);
     formicBag.resetForm();
   };

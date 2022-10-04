@@ -6,7 +6,9 @@ const { User } = require("../models");
 module.exports.createUser = async (req, res, next) => {
   try {
     const { body } = req;
+
     const values = _.pick(body, ["login", "password", "avatar"]);
+
     const user = await User.create(values);
     if (!user) {
       next(createError(400, "Invalid data"));
