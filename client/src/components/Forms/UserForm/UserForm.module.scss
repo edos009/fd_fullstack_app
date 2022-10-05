@@ -2,7 +2,6 @@
 
 .users_form {
   display: flex;
-  flex-basis: 40%;
   flex-direction: column;
 
   height: 280px;
@@ -37,6 +36,8 @@
   }
 
   .users_input_file_custom {
+    cursor: pointer;
+
     span {
       padding: 6px 10px;
       border-radius: 6px;

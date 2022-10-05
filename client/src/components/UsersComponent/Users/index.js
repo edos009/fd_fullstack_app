@@ -17,14 +17,19 @@ const Users = () => {
               <div className={styles.users_box_img}>
                 <img className={styles.users_img} src={createUser} alt="" />
               </div>
-              <UserForm />
+              <div className={styles.users_wrapper_form}>
+                <div className={styles.users_title}>
+                  <span>Create User</span>
+                </div>
+                <UserForm />
+              </div>
             </div>
             <UserList isShowUsers={isShowUsers} />
             <button
               className={styles.users_bth_show}
               onClick={() => setIsShowUsers(!isShowUsers)}
             >
-              Show Users
+              {isShowUsers ? "Hide Users" : "Show Users"}
             </button>
           </div>
         </div>
