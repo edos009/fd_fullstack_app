@@ -8,8 +8,12 @@ const ACTION_TYPES = {
   GET_USERS_SUCCESS: "get/users/success",
   GET_USERS_ERROR: "get/users/error",
 
+  DELETE_USER_REQUEST: "delete/user/request",
+  DELETE_USER_SUCCESS: "delete/user/success",
+  DELETE_USER_ERROR: "delete/user/error",
+
   SET_TOTAL_USERS_COUNT: "set/total_users_count",
-  SET_OFFSET: "set/offset"
+  SET_OFFSET: "set/offset",
 };
 
 export default ACTION_TYPES;

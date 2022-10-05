@@ -22,18 +22,20 @@ const handlerError = produce((draft, action) => {
 const handlers = {
   [ACTION_TYPES.CREATE_USER_REQUEST]: handlerRequest,
   [ACTION_TYPES.GET_USERS_REQUEST]: handlerRequest,
+  [ACTION_TYPES.DELETE_USER_REQUEST]: handlerRequest,
 
   [ACTION_TYPES.CREATE_USER_SUCCESS]: produce((draft, action) => {
-    const { user } = action.payload;
     draft.isFetching = false;
-    draft.users.push(user);
-    draft.users = [];
   }),
   [ACTION_TYPES.GET_USERS_SUCCESS]: produce((draft, action) => {
     const { users } = action.payload;
     draft.isFetching = false;
-    draft.users = [];
-    draft.users.push(...users);
+    draft.users = users;
+  }),
+  [ACTION_TYPES.DELETE_USER_SUCCESS]: produce((draft, action) => {
+    // const { user } = action.payload;
+    draft.isFetching = false;
+    // draft.users.filter(u => );
   }),
   [ACTION_TYPES.SET_TOTAL_USERS_COUNT]: produce((draft, action) => {
     const { totalCount } = action.payload;
@@ -46,6 +48,7 @@ const handlers = {
 
   [ACTION_TYPES.CREATE_USER_ERROR]: handlerError,
   [ACTION_TYPES.GET_USERS_ERROR]: handlerError,
+  [ACTION_TYPES.DELETE_USER_ERROR]: handlerError,
 };
 
 const userReducer = (state = initialState, action) => {

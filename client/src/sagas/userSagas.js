@@ -29,3 +29,16 @@ export function* getUsersSaga(action) {
     yield put(ActionUserCreator.getUsersError(error));
   }
 }
+
+export function* deleteUserSaga(action) {
+  try {
+    const {
+      data: {
+        data: {user},
+      },
+    } = yield API.deleteUserById(action.payload.userId);
+    yield put(ActionUserCreator.deleteUserSuccess(user));
+  } catch (error) {
+    yield put(ActionUserCreator.deleteUserError(error));
+  }
+}

@@ -51,6 +51,18 @@ module.exports.getUserById = async (req, res, next) => {
   }
 };
 
+/* Delete User by Id */
+module.exports.deleteUserById = async (req, res, next) => {
+  try {
+    const { instanceUser } = req;
+    const userPrepare = _.omit(instanceUser.get(), ["password"]);
+    await instanceUser.destroy();
+    res.status(200).send({ data: userPrepare });
+  } catch (error) {
+    next(error);
+  }
+};
+
 /* Update User */
 module.exports.updateUser = async (req, res, next) => {
   try {

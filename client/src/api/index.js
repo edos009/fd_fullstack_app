@@ -21,3 +21,7 @@ export const createUser = (data) => {
 
 export const getAllUsers = ({ limit, offset }) =>
   httpClient.get(`/users?${qs.stringify({ limit, offset })}`);
+
+export const deleteUserById = (userId) => {
+  return httpClient.delete(`/users/${userId}`);
+}

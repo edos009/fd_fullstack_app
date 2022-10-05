@@ -11,6 +11,7 @@ const usersRouter = Router();
 usersRouter.post("/", upload, UserController.createUser);
 usersRouter.get("/", paginate, UserController.getUsers);
 usersRouter.get("/:userId", checkUser, UserController.getUserById);
+usersRouter.delete("/:userId", checkUser, UserController.deleteUserById);
 usersRouter.patch("/:userId", checkUser, UserController.updateUser);
 
 usersRouter.post("/:userId/tasks", checkUser, TaskController.createTask);

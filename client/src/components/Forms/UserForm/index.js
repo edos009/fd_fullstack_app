@@ -26,10 +26,11 @@ const UserForm = () => {
   );
 
   const onSubmit = (values, formicBag) => {
-    // console.log(values);
     createUserRequest(values);
     formicBag.resetForm();
-    getUsersRequest({ limit: LIMIT, offset });
+    setTimeout(() => {
+      getUsersRequest({ limit: LIMIT, offset });
+    }, 100);
   };
   return (
     <Formik initialValues={initialValues} onSubmit={onSubmit}>
