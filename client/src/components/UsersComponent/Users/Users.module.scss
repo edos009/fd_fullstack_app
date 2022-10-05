@@ -7,14 +7,45 @@
     @extend %container;
 
     .users_inner {
-      .users_title{
-        margin-top: 15px;
+      .users_create_box {
+        display: flex;
+        align-items: center;
+
+        margin-top: 25px;
+
+        .users_box_img {
+          flex-basis: 55%;
+          .users_img {
+            display: block;
+
+            width: 90%;
+            margin: 0 auto;
+
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+          }
+        }
+      }
+
+      .users_bth_show {
+        display: block;
+
+        max-width: 300px;
+        width: 100%;
+
+        padding: 14px 10px;
+        border: none;
+        border-radius: 6px;
+        margin: 5px auto 10px;
+
+        background-color: $color-lavender;
+        color: $color-white;
 
         font-weight: 700;
-        font-size: 40px;
-        line-height: 1.2em;
+        font-size: 18px;
+        line-height: 1.2;
         text-transform: uppercase;
-        text-align: center;
       }
     }
   }

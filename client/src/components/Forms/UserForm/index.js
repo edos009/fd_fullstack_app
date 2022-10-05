@@ -6,8 +6,11 @@ import { bindActionCreators } from "redux";
 import * as ActionUserCreator from "../../../actions/userCreators";
 import CONSTANTS from "../../../constants";
 
-const {PAGES: {LIMIT}} = CONSTANTS
+import styles from "./UserForm.module.scss";
 
+const {
+  PAGES: { LIMIT },
+} = CONSTANTS;
 
 const initialValues = {
   login: "",
@@ -16,7 +19,7 @@ const initialValues = {
 };
 
 const UserForm = () => {
-  const {offset} = useSelector(({users}) => users)
+  const { offset } = useSelector(({ users }) => users);
   const { createUserRequest, getUsersRequest } = bindActionCreators(
     ActionUserCreator,
     useDispatch()
@@ -26,21 +29,40 @@ const UserForm = () => {
     // console.log(values);
     createUserRequest(values);
     formicBag.resetForm();
-    getUsersRequest({limit: LIMIT, offset });
+    getUsersRequest({ limit: LIMIT, offset });
   };
   return (
     <Formik initialValues={initialValues} onSubmit={onSubmit}>
       {(formikProps) => (
-        <Form>
-          <Field name="login" placeholder="Login" />
-          <Field name="password" type="password" placeholder="Password" />
+        <Form className={styles.users_form}>
+          <Field
+            name="login"
+            placeholder="Login"
+            className={styles.users_input}
+          />
+          <Field
+            name="password"
+            type="password"
+            placeholder="Password"
+            className={styles.users_input}
+          />
           <input
+            id="avatar"
             name="avatar"
             type="file"
-            placeholder="Login"
-            onChange={(e) => formikProps.setFieldValue('avatar', e.target.files[0])}
+            onChange={(e) =>
+              formikProps.setFieldValue("avatar", e.target.files[0])
+            }
+            className={styles.users_input_file}
           />
-          <input type="submit" value="Create user" />
+          <label htmlFor="avatar" className={styles.users_input_file_custom}>
+            <span>Choose file to upload</span>
+          </label>
+          <input
+            type="submit"
+            value="Create user"
+            className={styles.users_input_submit}
+          />
         </Form>
       )}
     </Formik>
