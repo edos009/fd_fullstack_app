@@ -48,6 +48,22 @@ export const deleteUserError = (error) => ({
   payload: { error },
 });
 
+/* Update User */
+export const updateUserRequest = ({ values, userId }) => ({
+  type: ACTION_TYPES.UPDATE_USER_REQUEST,
+  payload: { values, userId },
+});
+
+export const updateUserSuccess = (user) => ({
+  type: ACTION_TYPES.UPDATE_USER_SUCCESS,
+  payload: { user },
+});
+
+export const updateUserError = (error) => ({
+  type: ACTION_TYPES.UPDATE_USER_ERROR,
+  payload: { error },
+});
+
 /* Set Total Users Count */
 export const setTotalUsersCount = ({ totalCount }) => ({
   type: ACTION_TYPES.SET_TOTAL_USERS_COUNT,

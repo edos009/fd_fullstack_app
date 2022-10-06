@@ -42,3 +42,14 @@ export function* deleteUserSaga(action) {
     yield put(ActionUserCreator.deleteUserError(error));
   }
 }
+
+export function* updateUserSaga(action) {
+  try {
+    const {
+      data: { data: user },
+    } = yield API.updateUser({data: action.payload.values, userId: action.payload.userId});
+    yield put(ActionUserCreator.updateUserSuccess(user));
+  } catch (error) {
+    yield put(ActionUserCreator.updateUserError(error));
+  }
+}

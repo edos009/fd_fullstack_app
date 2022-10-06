@@ -6,6 +6,11 @@
   overflow: hidden;
   height: 0;
   transition: opacity 0.4s ease, height 0.4s ease;
+  &.users_wrapper_visible {
+    height: 365px;
+    overflow: visible;
+    opacity: 1;
+  }
 
   .users_list {
     display: flex;
@@ -131,10 +136,4 @@
       color: $color-dark-grey-blue;
     }
   }
-}
-
-.users_wrapper.users_wrapper_visible {
-  height: 365px;
-  overflow: visible;
-  opacity: 1;
 }

@@ -67,6 +67,9 @@ module.exports.deleteUserById = async (req, res, next) => {
 module.exports.updateUser = async (req, res, next) => {
   try {
     const { body, instanceUser } = req;
+    if (req.file) {
+      body.avatar = req.file.filename;
+    }
 
     const updatedUser = await instanceUser.update(body, { returning: true });
     const userPrepare = _.omit(updatedUser.get(), ["password"]);

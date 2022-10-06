@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
 import cx from "classnames";
@@ -8,6 +8,7 @@ import CONSTANTS from "../../../constants";
 
 import defaultAvatar from "../../../assets/images/users-ava-default.png";
 import styles from "./UserList.module.scss";
+import UsersEditWindow from "../UsersEditWindow";
 
 const {
   PAGES: { LIMIT },
@@ -15,6 +16,9 @@ const {
 
 const UserList = ({ isShowUsers }) => {
   const { users, totalUsersCount, offset } = useSelector(({ users }) => users);
+  const [isEditWindowActive, setIsEditWindowActive] = useState(false);
+  const [userEditable, setUserEditable] = useState({});
+
   const { getUsersRequest, setOffset, deleteUserRequest } = bindActionCreators(
     ActionUserCreator,
     useDispatch()
@@ -79,7 +83,13 @@ const UserList = ({ isShowUsers }) => {
             <h3 className={styles.users_item_login}>{u.login}</h3>
             <div className={styles.users_control}>
               <div className={styles.users_btn_wrapper}>
-                <button className={styles.users_btn_edit}></button>
+                <button
+                  className={styles.users_btn_edit}
+                  onClick={() => {
+                    setIsEditWindowActive(true);
+                    setUserEditable(u);
+                  }}
+                ></button>
               </div>
               <div className={styles.users_btn_wrapper}>
                 <button
@@ -104,6 +114,13 @@ const UserList = ({ isShowUsers }) => {
           </span>
         ))}
       </div>
+      {isEditWindowActive && (
+        <UsersEditWindow
+          user={userEditable}
+          isEditWindowActive={isEditWindowActive}
+          setIsEditWindowActive={setIsEditWindowActive}
+        />
+      )}
     </div>
   );
 };

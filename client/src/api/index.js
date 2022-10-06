@@ -24,4 +24,17 @@ export const getAllUsers = ({ limit, offset }) =>
 
 export const deleteUserById = (userId) => {
   return httpClient.delete(`/users/${userId}`);
-}
+};
+
+export const updateUser = ({ data, userId }) => {
+  const form = new FormData();
+  form.append("login", data.login);
+  form.append("password", data.password);
+  form.append("avatar", data.avatar);
+
+  return httpClient.patch(`/users/${userId}`, form, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
+};
