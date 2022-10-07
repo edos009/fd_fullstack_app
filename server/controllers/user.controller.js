@@ -44,8 +44,8 @@ module.exports.getUsers = async (req, res, next) => {
 module.exports.getUserById = async (req, res, next) => {
   try {
     const { instanceUser } = req;
-    const userPrepare = _.omit(instanceUser.get(), ["password"]);
-    res.status(200).send({ data: userPrepare });
+    const user = _.omit(instanceUser.get(), ["password"]);
+    res.status(200).send({ data: user });
   } catch (error) {
     next(error);
   }

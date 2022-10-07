@@ -6,14 +6,14 @@
   position: fixed;
 
   width: 100vw;
-  height: 100%;
+  height: 100vh;
 
   top: 0;
   left: 0;
 
   background-color: $color-dark-grey-blue-opacity;
   &.window_back_visible {
-    display: flex;
+    display: block;
   }
 }
 

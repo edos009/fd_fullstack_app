@@ -38,3 +38,25 @@ export const updateUser = ({ data, userId }) => {
     },
   });
 };
+
+export const getUserById = (userId) => {
+  return httpClient.get(`/users/${userId}`);
+};
+
+export const createTask = ({ data, userId }) => {
+  return httpClient.post(`/users/${userId}/tasks`, data);
+};
+
+
+// export const createTask = ({ data, userId }) => {
+//   console.log(data);
+//   const form = new FormData();
+//   form.append("content", data.content);
+//   form.append("deadLine", data.deadLine);
+
+//   return httpClient.post(`/users/${userId}/tasks`, form, {
+//     headers: {
+//       "Content-Type": "multipart/form-data",
+//     },
+//   });
+// };

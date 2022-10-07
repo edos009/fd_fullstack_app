@@ -6,9 +6,7 @@ import * as ActionUserCreator from "../actions/userCreators";
 export function* createUserSaga(action) {
   try {
     const {
-      data: {
-        data: user,
-      },
+      data: { data: user },
     } = yield API.createUser(action.payload.values);
     yield put(ActionUserCreator.createUserSuccess(user));
   } catch (error) {
@@ -20,11 +18,11 @@ export function* getUsersSaga(action) {
   try {
     const {
       data: {
-        data: {users, totalCount},
+        data: { users, totalCount },
       },
     } = yield API.getAllUsers(action.payload);
-    yield put(ActionUserCreator.getUsersSuccess({users}));
-    yield put(ActionUserCreator.setTotalUsersCount({totalCount}));
+    yield put(ActionUserCreator.getUsersSuccess({ users }));
+    yield put(ActionUserCreator.setTotalUsersCount({ totalCount }));
   } catch (error) {
     yield put(ActionUserCreator.getUsersError(error));
   }
@@ -34,7 +32,7 @@ export function* deleteUserSaga(action) {
   try {
     const {
       data: {
-        data: {user},
+        data: { user },
       },
     } = yield API.deleteUserById(action.payload.userId);
     yield put(ActionUserCreator.deleteUserSuccess(user));
@@ -47,9 +45,35 @@ export function* updateUserSaga(action) {
   try {
     const {
       data: { data: user },
-    } = yield API.updateUser({data: action.payload.values, userId: action.payload.userId});
+    } = yield API.updateUser({
+      data: action.payload.values,
+      userId: action.payload.userId,
+    });
     yield put(ActionUserCreator.updateUserSuccess(user));
   } catch (error) {
     yield put(ActionUserCreator.updateUserError(error));
+  }
+}
+
+export function* getUserByIdSaga(action) {
+  try {
+    const {
+      data: { data },
+    } = yield API.getUserById(action.payload.userId);
+    yield put(ActionUserCreator.getUserSuccess(data));
+  } catch (error) {
+    yield put(ActionUserCreator.getUserError(error));
+  }
+}
+
+export function* createTaskSaga(action) {
+  console.log(action.payload);
+  try {
+    const {
+      data: { data },
+    } = yield API.createTask({data: action.payload.values, userId:action.payload.userId});
+    yield put(ActionUserCreator.createTaskSuccess(data));
+  } catch (error) {
+    yield put(ActionUserCreator.createTaskError(error));
   }
 }

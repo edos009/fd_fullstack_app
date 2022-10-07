@@ -1,21 +1,12 @@
 @import "../../../common/styles/colors";
 
-.users_form {
+.task_form {
   display: flex;
   flex-direction: column;
 
-  height: 280px;
+  margin-top: 60px;
 
-  padding: 20px 15px;
-  border-radius: 25px;
-  margin-left: -60px;
-
-  box-shadow: 0px 3px 5px 0px rgba(117, 125, 148, 1);
-
-  background-color: $color-white;
-
-  .users_input,
-  .users_input_file_custom {
+  .task_input {
     padding: 14px 10px;
     border: none;
     border-radius: 6px;
@@ -30,24 +21,7 @@
     line-height: 1.2;
   }
 
-  .users_input_file {
-    display: none;
-  }
-
-  .users_input_file_custom {
-    cursor: pointer;
-
-    span {
-      padding: 6px 10px;
-      border-radius: 6px;
-
-      box-shadow: 0px 1px 2px 0px rgba(117, 125, 148, 1);
-
-      background-color: $color-white;
-    }
-  }
-
-  .users_input_submit {
+  .task_input_submit {
     display: block;
     max-width: 200px;
     width: 100%;
@@ -55,7 +29,7 @@
     padding: 12px 10px;
     border: none;
     border-radius: 6px;
-    margin: 5px auto 0;
+    margin: 15px auto 0;
 
     box-shadow: 0px 1px 2px 0px rgba(117, 125, 148, 1);
 

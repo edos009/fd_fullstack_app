@@ -1,20 +1,21 @@
 import React, { useState, useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
+import { useNavigate } from "react-router-dom";
 import cx from "classnames";
 
+import UsersEditWindow from "../UsersEditWindow";
 import * as ActionUserCreator from "../../../actions/userCreators";
 import CONSTANTS from "../../../constants";
 
 import defaultAvatar from "../../../assets/images/users-ava-default.png";
-import styles from "./UserList.module.scss";
-import UsersEditWindow from "../UsersEditWindow";
+import styles from "./UsersList.module.scss";
 
 const {
   PAGES: { LIMIT },
 } = CONSTANTS;
 
-const UserList = ({ isShowUsers }) => {
+const UsersList = ({ isShowUsers }) => {
   const { users, totalUsersCount, offset } = useSelector(({ users }) => users);
   const [isEditWindowActive, setIsEditWindowActive] = useState(false);
   const [userEditable, setUserEditable] = useState({});
@@ -23,6 +24,7 @@ const UserList = ({ isShowUsers }) => {
     ActionUserCreator,
     useDispatch()
   );
+  const navigate = useNavigate()
 
   const stylesUsersWrapper = cx(styles.users_wrapper, {
     [styles.users_wrapper_visible]: isShowUsers,
@@ -44,7 +46,6 @@ const UserList = ({ isShowUsers }) => {
   }, [offset]);
 
   const deleteUser = (id) => {
-    //Как вернуть из саги промис!!
     deleteUserRequest(id);
     if (users.length - 1 === 0 && totalUsersCount - 1 !== 0) {
       setOffset(offset - LIMIT);
@@ -66,7 +67,11 @@ const UserList = ({ isShowUsers }) => {
     <div className={stylesUsersWrapper}>
       <ul className={styles.users_list}>
         {users.map((u) => (
-          <li className={styles.users_list_item} key={u.id}>
+          <li
+            className={styles.users_list_item}
+            key={u.id}
+            onClick={() => navigate(`/users/${u.id}`)}
+          >
             {u.avatar ? (
               <img
                 className={styles.users_item_img}
@@ -85,7 +90,8 @@ const UserList = ({ isShowUsers }) => {
               <div className={styles.users_btn_wrapper}>
                 <button
                   className={styles.users_btn_edit}
-                  onClick={() => {
+                  onClick={(e) => {
+                    e.stopPropagation();
                     setIsEditWindowActive(true);
                     setUserEditable(u);
                   }}
@@ -94,7 +100,10 @@ const UserList = ({ isShowUsers }) => {
               <div className={styles.users_btn_wrapper}>
                 <button
                   className={styles.users_btn_delete}
-                  onClick={() => deleteUser(u.id)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    deleteUser(u.id)
+                  }}
                 ></button>
               </div>
             </div>
@@ -114,15 +123,13 @@ const UserList = ({ isShowUsers }) => {
           </span>
         ))}
       </div>
-      {/* {isEditWindowActive && ( */}
       <UsersEditWindow
         user={userEditable}
         isEditWindowActive={isEditWindowActive}
         setIsEditWindowActive={setIsEditWindowActive}
       />
-      {/* )} */}
     </div>
   );
 };
 
-export default UserList;
+export default UsersList;

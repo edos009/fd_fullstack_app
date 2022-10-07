@@ -64,6 +64,38 @@ export const updateUserError = (error) => ({
   payload: { error },
 });
 
+/* Get User By Id */
+export const getUserRequest = (userId) => ({
+  type: ACTION_TYPES.GET_USER_REQUEST,
+  payload: { userId },
+});
+
+export const getUserSuccess = (user) => ({
+  type: ACTION_TYPES.GET_USER_SUCCESS,
+  payload: { user },
+});
+
+export const getUserError = (error) => ({
+  type: ACTION_TYPES.GET_USER_ERROR,
+  payload: { error },
+});
+
+/* Create Task */
+export const createTaskRequest = ({values, userId}) => ({
+  type: ACTION_TYPES.CREATE_TASK_REQUEST,
+  payload: { values, userId },
+});
+
+export const createTaskSuccess = (task) => ({
+  type: ACTION_TYPES.CREATE_TASK_SUCCESS,
+  payload: { task },
+});
+
+export const createTaskError = (error) => ({
+  type: ACTION_TYPES.CREATE_TASK_ERROR,
+  payload: { error },
+});
+
 /* Set Total Users Count */
 export const setTotalUsersCount = ({ totalCount }) => ({
   type: ACTION_TYPES.SET_TOTAL_USERS_COUNT,

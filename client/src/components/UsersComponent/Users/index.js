@@ -3,7 +3,7 @@ import UserForm from "../../Forms/UserForm";
 
 import createUser from "../../../assets/images/create-user-1.webp";
 import styles from "./Users.module.scss";
-import UserList from "../UserList";
+import UserList from "../UsersList";
 
 const Users = () => {
   const [isShowUsers, setIsShowUsers] = useState(false);
