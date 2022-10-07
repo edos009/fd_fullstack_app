@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import cx from "classnames";
 
 import UserEditForm from "../../Forms/EditUserForm";
@@ -18,6 +18,17 @@ const UsersEditWindow = ({
   const stylesUsersEditWindow = cx(styles.users_edit_window, {
     [styles.users_edit_window_visible]: isEditWindowActive,
   });
+
+  useEffect(() => {
+    const body = document.querySelector("body");
+    if (isEditWindowActive) {
+      body.classList.add("body_scroll");
+      body.style.overflowY = "hidden";
+    } else {
+      body.style.overflowY = "visible";
+    }
+  }, [isEditWindowActive]);
+
   return (
     <>
       <div className={stylesWindowBack}></div>

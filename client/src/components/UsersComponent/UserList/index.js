@@ -114,13 +114,13 @@ const UserList = ({ isShowUsers }) => {
           </span>
         ))}
       </div>
-      {isEditWindowActive && (
-        <UsersEditWindow
-          user={userEditable}
-          isEditWindowActive={isEditWindowActive}
-          setIsEditWindowActive={setIsEditWindowActive}
-        />
-      )}
+      {/* {isEditWindowActive && ( */}
+      <UsersEditWindow
+        user={userEditable}
+        isEditWindowActive={isEditWindowActive}
+        setIsEditWindowActive={setIsEditWindowActive}
+      />
+      {/* )} */}
     </div>
   );
 };
