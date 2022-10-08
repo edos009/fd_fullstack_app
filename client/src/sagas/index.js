@@ -8,6 +8,7 @@ import {
   updateUserSaga,
   getUserByIdSaga,
   createTaskSaga,
+  getUserTasksSaga,
 } from "./userSagas";
 
 function* rootSaga() {
@@ -17,6 +18,7 @@ function* rootSaga() {
   yield takeLatest(ACTION_TYPES.UPDATE_USER_REQUEST, updateUserSaga);
   yield takeLatest(ACTION_TYPES.GET_USER_REQUEST, getUserByIdSaga);
   yield takeLatest(ACTION_TYPES.CREATE_TASK_REQUEST, createTaskSaga);
+  yield takeLatest(ACTION_TYPES.GET_USER_TASKS_REQUEST, getUserTasksSaga);
 }
 
 export default rootSaga;

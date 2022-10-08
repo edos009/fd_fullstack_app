@@ -77,3 +77,14 @@ export function* createTaskSaga(action) {
     yield put(ActionUserCreator.createTaskError(error));
   }
 }
+
+export function* getUserTasksSaga(action) {
+  try {
+    const {
+      data: { data },
+    } = yield API.getUserTasks(action.payload.userId);
+    yield put(ActionUserCreator.getUserTasksSuccess(data));
+  } catch (error) {
+    yield put(ActionUserCreator.getUserTasksError(error));
+  }
+}

@@ -47,6 +47,10 @@ export const createTask = ({ data, userId }) => {
   return httpClient.post(`/users/${userId}/tasks`, data);
 };
 
+export const getUserTasks = (userId) => {
+  return httpClient.get(`/users/${userId}/tasks`);
+};
+
 
 // export const createTask = ({ data, userId }) => {
 //   console.log(data);

@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import HomePage from "./pages/HomePage";
 import UsersPage from "./pages/UsersPage";
 import UserInfoPage from "./pages/UserInfoPage";
+import UserTasksPage from "./pages/UserTasksPage";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/users" element={<UsersPage />} />
         <Route path="/users/:userId" element={<UserInfoPage />} />
+        <Route path="/users/:userId/tasks" element={<UserTasksPage />} />
       </Routes>
       <Footer />
     </>

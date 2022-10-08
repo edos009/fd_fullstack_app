@@ -7,7 +7,8 @@ const initialState = {
   offset: 0,
   isFetching: false,
   error: null,
-  user: {}
+  user: {},
+  user_tasks: []
 };
 
 const handlerRequest = produce((draft, action) => {
@@ -27,6 +28,7 @@ const handlers = {
   [ACTION_TYPES.UPDATE_USER_REQUEST]: handlerRequest,
   [ACTION_TYPES.GET_USER_REQUEST]: handlerRequest,
   [ACTION_TYPES.CREATE_TASK_REQUEST]: handlerRequest,
+  [ACTION_TYPES.GET_USER_TASKS_REQUEST]: handlerRequest,
 
   [ACTION_TYPES.CREATE_USER_SUCCESS]: produce((draft, action) => {
     draft.isFetching = false;
@@ -47,6 +49,14 @@ const handlers = {
     draft.isFetching = false;
     draft.user = user;
   }),
+  [ACTION_TYPES.CREATE_TASK_SUCCESS]: produce((draft, action) => {
+    draft.isFetching = false;
+  }),
+  [ACTION_TYPES.GET_USER_TASKS_SUCCESS]: produce((draft, action) => {
+    const { tasks } = action.payload;
+    draft.isFetching = false;
+    draft.user_tasks = tasks;
+  }),
   [ACTION_TYPES.SET_TOTAL_USERS_COUNT]: produce((draft, action) => {
     const { totalCount } = action.payload;
     draft.totalUsersCount = totalCount;
@@ -55,9 +65,7 @@ const handlers = {
     const { offset } = action.payload;
     draft.offset = offset;
   }),
-  [ACTION_TYPES.CREATE_TASK_SUCCESS]: produce((draft, action) => {
-    draft.isFetching = false;
-  }),
+
 
   [ACTION_TYPES.CREATE_USER_ERROR]: handlerError,
   [ACTION_TYPES.GET_USERS_ERROR]: handlerError,
@@ -65,6 +73,7 @@ const handlers = {
   [ACTION_TYPES.UPDATE_USER_ERROR]: handlerError,
   [ACTION_TYPES.GET_USER_ERROR]: handlerError,
   [ACTION_TYPES.CREATE_TASK_ERROR]: handlerError,
+  [ACTION_TYPES.GET_USER_TASKS_ERROR]: handlerError,
 };
 
 const userReducer = (state = initialState, action) => {

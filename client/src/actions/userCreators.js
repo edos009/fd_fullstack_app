@@ -96,6 +96,22 @@ export const createTaskError = (error) => ({
   payload: { error },
 });
 
+/* Get User Tasks */
+export const getUserTasksRequest = (userId) => ({
+  type: ACTION_TYPES.GET_USER_TASKS_REQUEST,
+  payload: { userId },
+});
+
+export const getUserTasksSuccess = (tasks) => ({
+  type: ACTION_TYPES.GET_USER_TASKS_SUCCESS,
+  payload: { tasks },
+});
+
+export const getUserTasksError = (error) => ({
+  type: ACTION_TYPES.GET_USER_TASKS_ERROR,
+  payload: { error },
+});
+
 /* Set Total Users Count */
 export const setTotalUsersCount = ({ totalCount }) => ({
   type: ACTION_TYPES.SET_TOTAL_USERS_COUNT,

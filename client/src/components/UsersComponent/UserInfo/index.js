@@ -7,7 +7,7 @@ import CreateTaskForm from "../../Forms/CreateTaskForm";
 import * as ActionUserCreator from "../../../actions/userCreators";
 
 import createTaskImg from "../../../assets/images/create-task.png";
-import styles from "./UserTasks.module.scss";
+import styles from "./UserInfo.module.scss";
 
 const UserInfo = () => {
   const { user } = useSelector(({ users }) => users);

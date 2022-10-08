@@ -9,7 +9,7 @@ import * as ActionUserCreator from "../../../actions/userCreators";
 import CONSTANTS from "../../../constants";
 
 import defaultAvatar from "../../../assets/images/users-ava-default.png";
-import styles from "./UserInfo.module.scss";
+import styles from "./UserList.module.scss";
 
 const {
   PAGES: { LIMIT },

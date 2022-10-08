@@ -24,6 +24,10 @@ const ACTION_TYPES = {
   CREATE_TASK_SUCCESS: "post/task/success",
   CREATE_TASK_ERROR: "post/task/error",
 
+  GET_USER_TASKS_REQUEST: "get/user/tasks/request",
+  GET_USER_TASKS_SUCCESS: "get/user/tasks/success",
+  GET_USER_TASKS_ERROR: "get/user/tasks/error",
+
   SET_TOTAL_USERS_COUNT: "set/total_users_count",
   SET_OFFSET: "set/offset",
 };
