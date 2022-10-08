@@ -9,13 +9,13 @@ import * as ActionUserCreator from "../../../actions/userCreators";
 import CONSTANTS from "../../../constants";
 
 import defaultAvatar from "../../../assets/images/users-ava-default.png";
-import styles from "./UsersList.module.scss";
+import styles from "./UserInfo.module.scss";
 
 const {
   PAGES: { LIMIT },
 } = CONSTANTS;
 
-const UsersList = ({ isShowUsers }) => {
+const UserInfo = ({ isShowUsers }) => {
   const { users, totalUsersCount, offset } = useSelector(({ users }) => users);
   const [isEditWindowActive, setIsEditWindowActive] = useState(false);
   const [userEditable, setUserEditable] = useState({});
@@ -24,7 +24,7 @@ const UsersList = ({ isShowUsers }) => {
     ActionUserCreator,
     useDispatch()
   );
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const stylesUsersWrapper = cx(styles.users_wrapper, {
     [styles.users_wrapper_visible]: isShowUsers,
@@ -102,7 +102,7 @@ const UsersList = ({ isShowUsers }) => {
                   className={styles.users_btn_delete}
                   onClick={(e) => {
                     e.stopPropagation();
-                    deleteUser(u.id)
+                    deleteUser(u.id);
                   }}
                 ></button>
               </div>
@@ -132,4 +132,4 @@ const UsersList = ({ isShowUsers }) => {
   );
 };
 
-export default UsersList;
+export default UserInfo;

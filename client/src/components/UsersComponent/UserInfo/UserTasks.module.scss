@@ -1,14 +1,14 @@
 @import "../../../common/styles/colors";
 @import "../../../common/styles/template";
 
-.user_tasks {
+.user_info {
   flex-grow: 1;
   .container {
     @extend %container;
 
-    .user_tasks_inner {
+    .user_info_inner {
       margin-top: 130px;
-      .user_tasks_wrapper {
+      .user_info_wrapper {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -49,7 +49,7 @@
           }
         }
 
-        .user_tasks_wrapper_form {
+        .user_info_wrapper_form {
           flex-basis: 600px;
           height: 400px;
 
@@ -60,7 +60,7 @@
 
           background-color: $color-white;
 
-          .user_tasks_title {
+          .user_info_title {
             margin: 18px 0px 40px 0px;
 
             color: #757d94;
@@ -77,7 +77,7 @@
             }
           }
 
-          .user_tasks_img {
+          .user_info_img {
             display: block;
 
             width: 185px;
@@ -93,24 +93,37 @@
         }
       }
 
-      .user_tasks_btn_show {
-        display: block;
+      .user_info_box_control {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
 
-        max-width: 300px;
-        width: 100%;
+        margin-top: 50px;
 
-        padding: 14px 10px;
-        border: none;
-        border-radius: 6px;
-        margin: 50px auto 10px;
+        .user_info_btn_show,
+        .user_info_btn_back {
+          display: block;
 
-        background-color: $color-lavender;
-        color: $color-white;
+          padding: 14px 10px;
+          border: none;
+          border-radius: 6px;
 
-        font-weight: 700;
-        font-size: 18px;
-        line-height: 1.2;
-        text-transform: uppercase;
+          background-color: $color-lavender;
+          color: $color-white;
+
+          font-weight: 700;
+          font-size: 18px;
+          line-height: 1.2;
+          text-transform: uppercase;
+        }
+
+        .user_info_btn_show{
+          flex-basis: 300px;
+        }
+
+        .user_info_btn_back{
+          flex-basis: 150px;
+        }
       }
     }
   }

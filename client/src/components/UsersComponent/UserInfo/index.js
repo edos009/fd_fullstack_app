@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
 
@@ -9,9 +9,10 @@ import * as ActionUserCreator from "../../../actions/userCreators";
 import createTaskImg from "../../../assets/images/create-task.png";
 import styles from "./UserTasks.module.scss";
 
-const UserTasks = () => {
-  const { userId } = useParams();
+const UserInfo = () => {
   const { user } = useSelector(({ users }) => users);
+  const { userId } = useParams();
+  const navigate = useNavigate();
 
   const { getUserRequest } = bindActionCreators(
     ActionUserCreator,
@@ -24,10 +25,10 @@ const UserTasks = () => {
   }, []);
 
   return (
-    <section className={styles.user_tasks}>
+    <section className={styles.user_info}>
       <div className={styles.container}>
-        <div className={styles.user_tasks_inner}>
-          <div className={styles.user_tasks_wrapper}>
+        <div className={styles.user_info_inner}>
+          <div className={styles.user_info_wrapper}>
             <div className={styles.user_box_info}>
               <img
                 className={styles.user_avatar}
@@ -38,27 +39,36 @@ const UserTasks = () => {
               />
               <p className={styles.user_login}>{user.login}</p>
             </div>
-            <div className={styles.user_tasks_wrapper_form}>
-              <div className={styles.user_tasks_title}>
+            <div className={styles.user_info_wrapper_form}>
+              <div className={styles.user_info_title}>
                 <span>Create Task</span>
               </div>
               <img
-                className={styles.user_tasks_img}
+                className={styles.user_info_img}
                 src={createTaskImg}
                 alt=""
               />
-              <CreateTaskForm userId={userId}/>
+              <CreateTaskForm userId={userId} />
             </div>
           </div>
-          <button className={styles.user_tasks_btn_show}>Show Tasks</button>
-          <h2 className={styles.user_tasks_title}>{}</h2>
-          <ul className={styles.user_tasks_list}>
-            <li className={styles.user_tasks_list_item}></li>
-          </ul>
+          <div className={styles.user_info_box_control}>
+            <button
+              className={styles.user_info_btn_back}
+              onClick={() => navigate("/users")}
+            >
+              Back
+            </button>
+            <button
+              className={styles.user_info_btn_show}
+              onClick={() => navigate(`/users/${userId}/tasks`)}
+            >
+              Show Tasks
+            </button>
+          </div>
         </div>
       </div>
     </section>
   );
 };
 
-export default UserTasks;
+export default UserInfo;
