@@ -30,6 +30,7 @@ const handlers = {
   [ACTION_TYPES.CREATE_TASK_REQUEST]: handlerRequest,
   [ACTION_TYPES.GET_USER_TASKS_REQUEST]: handlerRequest,
   [ACTION_TYPES.DELETE_USER_TASK_REQUEST]: handlerRequest,
+  [ACTION_TYPES.UPDATE_USER_TASK_REQUEST]: handlerRequest,
 
   [ACTION_TYPES.CREATE_USER_SUCCESS]: produce((draft, action) => {
     draft.isFetching = false;
@@ -61,6 +62,9 @@ const handlers = {
   [ACTION_TYPES.DELETE_USER_TASK_SUCCESS]: produce((draft, action) => {
     draft.isFetching = false;
   }),
+  [ACTION_TYPES.UPDATE_USER_TASK_SUCCESS]: produce((draft, action) => {
+    draft.isFetching = false;
+  }),
   [ACTION_TYPES.SET_TOTAL_USERS_COUNT]: produce((draft, action) => {
     const { totalCount } = action.payload;
     draft.totalUsersCount = totalCount;
@@ -78,6 +82,7 @@ const handlers = {
   [ACTION_TYPES.CREATE_TASK_ERROR]: handlerError,
   [ACTION_TYPES.GET_USER_TASKS_ERROR]: handlerError,
   [ACTION_TYPES.DELETE_USER_TASK_ERROR]: handlerError,
+  [ACTION_TYPES.UPDATE_USER_TASK_ERROR]: handlerError,
 };
 
 const userReducer = (state = initialState, action) => {

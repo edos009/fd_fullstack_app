@@ -10,6 +10,7 @@ import {
   createTaskSaga,
   getUserTasksSaga,
   deleteUserTaskSaga,
+  updateUserTaskSaga,
 } from "./userSagas";
 
 function* rootSaga() {
@@ -21,6 +22,7 @@ function* rootSaga() {
   yield takeLatest(ACTION_TYPES.CREATE_TASK_REQUEST, createTaskSaga);
   yield takeLatest(ACTION_TYPES.GET_USER_TASKS_REQUEST, getUserTasksSaga);
   yield takeLatest(ACTION_TYPES.DELETE_USER_TASK_REQUEST, deleteUserTaskSaga);
+  yield takeLatest(ACTION_TYPES.UPDATE_USER_TASK_REQUEST, updateUserTaskSaga);
 }
 
 export default rootSaga;

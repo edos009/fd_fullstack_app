@@ -1,6 +1,8 @@
-PATCH http://localhost:5000/api/users/1/tasks/1 HTTP/1.1
+PATCH http://localhost:5000/api/users/28/tasks/260 HTTP/1.1
 Content-Type: application/json
 
 {
-  "content": "Megic Task!!!"
+  "content": "Test Task 1",
+  "isDone": true,
+  "deadLine": "2022-12-01"
 }

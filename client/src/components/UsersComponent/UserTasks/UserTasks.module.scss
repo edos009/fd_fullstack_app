@@ -42,7 +42,13 @@
           margin-bottom: 12px;
 
           box-shadow: 0px 1px 3px 0px rgba(117, 125, 148, 1);
-          background-color: #ebecf7;
+          background-color: $color-light-grey;
+          opacity: 1;
+          transition: opacity 1s ease-out;
+
+          &.user_tasks_list_item_bg{
+            opacity: 0;
+          }
 
           .task_container {
             display: flex;
@@ -64,6 +70,54 @@
               justify-content: flex-end;
               gap: 10px;
               flex-basis: 15%;
+
+              .task_checkbox_wrapper {
+                .task_checkbox {
+                  display: none;
+
+                  &:checked + label::before {
+                    content: "";
+                    position: absolute;
+
+                    top: 5px;
+                    right: 5px;
+
+                    width: 30px;
+                    height: 30px;
+
+                    z-index: 99;
+
+                    background-color: $color-dark-grey-blue;
+                  }
+                }
+
+                .task_custom_checkbox {
+                  position: relative;
+
+                  padding-right: 45px;
+
+                  &::after,
+                  &::before {
+                    border-radius: 6px;
+
+                    cursor: pointer;
+                  }
+
+                  &::after {
+                    content: "";
+                    position: absolute;
+
+                    width: 40px;
+                    height: 40px;
+
+                    top: 0;
+                    right: 0;
+
+                    box-shadow: 0px 1px 3px 0px rgba(117, 125, 148, 1);
+                    background-color: $color-light-grey;
+                  }
+                }
+              }
 
               .task_btn_wrapper {
                 display: flex;
@@ -124,11 +178,6 @@
           }
         }
       }
-
-      .window_without_tasks{
-        
-      }
-
 
       .user_tasks_btn_back {
         display: block;

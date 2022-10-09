@@ -106,3 +106,19 @@ export function* deleteUserTaskSaga(action) {
     yield put(ActionUserCreator.deleteUserTaskError(error));
   }
 }
+
+export function* updateUserTaskSaga(action) {
+  try {
+    const {
+      data: { data },
+    } = yield API.updateTask({
+      data: action.payload.values,
+      userId: action.payload.userId,
+      taskId: action.payload.taskId,
+    });
+    yield put(ActionUserCreator.updateUserTaskSuccess(data));
+    yield put(ActionUserCreator.getUserTasksRequest(action.payload.userId))
+  } catch (error) {
+    yield put(ActionUserCreator.updateUserTaskError(error));
+  }
+}

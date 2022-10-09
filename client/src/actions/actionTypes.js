@@ -32,6 +32,10 @@ const ACTION_TYPES = {
   DELETE_USER_TASK_SUCCESS: "delete/user/task/success",
   DELETE_USER_TASK_ERROR: "delete/user/task/error",
 
+  UPDATE_USER_TASK_REQUEST: "update/user/task/request",
+  UPDATE_USER_TASK_SUCCESS: "update/user/task/success",
+  UPDATE_USER_TASK_ERROR: "update/user/task/error",
+
   SET_TOTAL_USERS_COUNT: "set/total_users_count",
   SET_OFFSET: "set/offset",
 };

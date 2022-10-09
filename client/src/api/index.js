@@ -55,6 +55,10 @@ export const deleteUserTaskById = ({userId, taskId}) => {
   return httpClient.delete(`/users/${userId}/tasks/${taskId}`);
 };
 
+export const updateTask = ({ data, userId, taskId }) => {
+  return httpClient.patch(`/users/${userId}/tasks/${taskId}`, data);
+};
+
 
 // export const createTask = ({ data, userId }) => {
 //   console.log(data);
