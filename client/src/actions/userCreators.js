@@ -112,6 +112,22 @@ export const getUserTasksError = (error) => ({
   payload: { error },
 });
 
+/* Delete User */
+export const deleteUserTaskRequest = ({userId, taskId}) => ({
+  type: ACTION_TYPES.DELETE_USER_TASK_REQUEST,
+  payload: { userId, taskId },
+});
+
+export const deleteUserTaskSuccess = (task) => ({
+  type: ACTION_TYPES.DELETE_USER_TASK_SUCCESS,
+  payload: { task },
+});
+
+export const deleteUserTaskError = (error) => ({
+  type: ACTION_TYPES.DELETE_USER_TASK_ERROR,
+  payload: { error },
+});
+
 /* Set Total Users Count */
 export const setTotalUsersCount = ({ totalCount }) => ({
   type: ACTION_TYPES.SET_TOTAL_USERS_COUNT,

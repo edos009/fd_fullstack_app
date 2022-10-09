@@ -51,6 +51,10 @@ export const getUserTasks = (userId) => {
   return httpClient.get(`/users/${userId}/tasks`);
 };
 
+export const deleteUserTaskById = ({userId, taskId}) => {
+  return httpClient.delete(`/users/${userId}/tasks/${taskId}`);
+};
+
 
 // export const createTask = ({ data, userId }) => {
 //   console.log(data);

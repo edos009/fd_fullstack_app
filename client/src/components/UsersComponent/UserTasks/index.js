@@ -13,10 +13,8 @@ const UserTasks = () => {
   const { userId } = useParams();
   const navigate = useNavigate();
 
-  const { getUserRequest, getUserTasksRequest } = bindActionCreators(
-    ActionUserCreator,
-    useDispatch()
-  );
+  const { getUserRequest, getUserTasksRequest, deleteUserTaskRequest } =
+    bindActionCreators(ActionUserCreator, useDispatch());
 
   useEffect(() => {
     getUserTasksRequest(userId);
@@ -32,29 +30,42 @@ const UserTasks = () => {
             <h1 className={styles.user_tasks_title}>
               <span>{`${user.login}'s tasks`}</span>
             </h1>
-            <ul className={styles.user_tasks_list}>
-              {user_tasks.map((ut) => (
-                <li className={styles.user_tasks_list_item} key={ut.id}>
-                  <div className={styles.task_container}>
-                    <p className={styles.task_content}>{ut.content}</p>
-                    <div className={styles.task_box_control}>
-                      <div className={styles.task_btn_wrapper}>
-                        <button className={styles.task_btn_edit}></button>
-                      </div>
-                      <div className={styles.task_btn_wrapper}>
-                        <button className={styles.task_btn_delete}></button>
+            {user_tasks.length ? (
+              <ul className={styles.user_tasks_list}>
+                {user_tasks.map((ut) => (
+                  <li className={styles.user_tasks_list_item} key={ut.id}>
+                    <div className={styles.task_container}>
+                      <p className={styles.task_content}>{ut.content}</p>
+                      <div className={styles.task_box_control}>
+                        <div className={styles.task_btn_wrapper}>
+                          <button className={styles.task_btn_edit}></button>
+                        </div>
+                        <div className={styles.task_btn_wrapper}>
+                          <button className={styles.task_btn_delete} onClick={() => deleteUserTaskRequest({userId, taskId: ut.id})}></button>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div className={styles.task_box_date}>
-                    <p className={styles.task_date_title}>execute before:</p>
-                    <p className={styles.task_date_text}>
-                      {format(new Date(`${ut.deadLine}`), "P")}
+                    <div className={styles.task_box_date}>
+                      <p className={styles.task_date_title}>execute before:</p>
+                      <p className={styles.task_date_text}>
+                        {format(new Date(`${ut.deadLine}`), "P")}
+                      </p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <ul className={styles.user_tasks_list}>
+                <li className={styles.user_tasks_list_item}>
+                  <div className={styles.task_container}>
+                    <p className={styles.task_content}>
+                      You don't have tasks.
                     </p>
                   </div>
                 </li>
-              ))}
-            </ul>
+              </ul>
+            )}
+
             <button
               className={styles.user_tasks_btn_back}
               onClick={() => navigate(`/users/${userId}`)}

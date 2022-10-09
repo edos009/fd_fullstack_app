@@ -71,7 +71,10 @@ export function* createTaskSaga(action) {
   try {
     const {
       data: { data },
-    } = yield API.createTask({data: action.payload.values, userId:action.payload.userId});
+    } = yield API.createTask({
+      data: action.payload.values,
+      userId: action.payload.userId,
+    });
     yield put(ActionUserCreator.createTaskSuccess(data));
   } catch (error) {
     yield put(ActionUserCreator.createTaskError(error));
@@ -86,5 +89,20 @@ export function* getUserTasksSaga(action) {
     yield put(ActionUserCreator.getUserTasksSuccess(data));
   } catch (error) {
     yield put(ActionUserCreator.getUserTasksError(error));
+  }
+}
+
+export function* deleteUserTaskSaga(action) {
+  try {
+    const {
+      data: { data },
+    } = yield API.deleteUserTaskById({
+      userId: action.payload.userId,
+      taskId: action.payload.taskId,
+    });
+    yield put(ActionUserCreator.deleteUserTaskSuccess(data));
+    yield put(ActionUserCreator.getUserTasksRequest(action.payload.userId));
+  } catch (error) {
+    yield put(ActionUserCreator.deleteUserTaskError(error));
   }
 }

@@ -28,6 +28,10 @@ const ACTION_TYPES = {
   GET_USER_TASKS_SUCCESS: "get/user/tasks/success",
   GET_USER_TASKS_ERROR: "get/user/tasks/error",
 
+  DELETE_USER_TASK_REQUEST: "delete/user/task/request",
+  DELETE_USER_TASK_SUCCESS: "delete/user/task/success",
+  DELETE_USER_TASK_ERROR: "delete/user/task/error",
+
   SET_TOTAL_USERS_COUNT: "set/total_users_count",
   SET_OFFSET: "set/offset",
 };
