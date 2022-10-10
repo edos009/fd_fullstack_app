@@ -30,6 +30,7 @@
 
   transform: translate(-50%, -50%);
   box-shadow: 0px 3px 5px 0px rgb(117 125 148);
+  z-index: 1001;
 
   background-color: $color-white;
 
@@ -75,6 +76,6 @@
 
   .edit_img {
     display: block;
-    margin: 15px auto 0;
+    margin: 50px auto 0;
   }
 }
