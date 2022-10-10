@@ -38,6 +38,10 @@ const ACTION_TYPES = {
 
   SET_TOTAL_USERS_COUNT: "set/total_users_count",
   SET_OFFSET: "set/offset",
+
+  GET_TASKS_REQUEST: "get/tasks/request",
+  GET_TASKS_SUCCESS: "get/tasks/success",
+  GET_TASKS_ERROR: "get/tasks/error",
 };
 
 export default ACTION_TYPES;

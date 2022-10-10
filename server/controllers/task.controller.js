@@ -98,7 +98,7 @@ module.exports.getTasks = async (req, res, next) => {
       next(404, '"Tasks not found.');
     }
 
-    res.status(200).send({ data: tasks });
+    res.status(200).send({ data: {tasks} });
   } catch (error) {
     next(error);
   }

@@ -1,5 +1,5 @@
 import React from "react";
-import UserTasks from "../../components/UsersComponent/UserTasks";
+import UserTasks from "../../components/UserComponents/UserTasks";
 
 const UserTasksPage = () => {
   return (

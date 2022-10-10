@@ -59,6 +59,9 @@ export const updateTask = ({ data, userId, taskId }) => {
   return httpClient.patch(`/users/${userId}/tasks/${taskId}`, data);
 };
 
+export const getAllTasks = () =>
+  httpClient.get(`/tasks`);
+
 
 // export const createTask = ({ data, userId }) => {
 //   console.log(data);
