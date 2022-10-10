@@ -1,12 +1,15 @@
 import React from "react";
-import { Form, Formik, Field } from "formik";
+import { Form, Formik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
+import cx from "classnames";
 
 import * as ActionUserCreator from "../../../actions/userCreators";
 import CONSTANTS from "../../../constants";
 
 import styles from "./UserForm.module.scss";
+import InputForm from "../InputForm";
+import { schema_create_user } from "../../../utils/schemas";
 
 const {
   PAGES: { LIMIT },
@@ -33,32 +36,52 @@ const UserForm = () => {
     }, 100);
   };
   return (
-    <Formik initialValues={initialValues} onSubmit={onSubmit}>
+    <Formik
+      initialValues={initialValues}
+      onSubmit={onSubmit}
+      validationSchema={schema_create_user}
+    >
       {(formikProps) => (
         <Form className={styles.users_form}>
-          <Field
+          <InputForm
             name="login"
             placeholder="Login"
-            className={styles.users_input}
+            inputClass="users_input"
+            wrapperClass="users_wrapper_input"
           />
-          <Field
+          <InputForm
             name="password"
             type="password"
             placeholder="Password"
-            className={styles.users_input}
+            inputClass="users_input"
+            wrapperClass="users_wrapper_input"
           />
-          <input
-            id="avatar"
-            name="avatar"
-            type="file"
-            onChange={(e) =>
-              formikProps.setFieldValue("avatar", e.target.files[0])
-            }
-            className={styles.users_input_file}
-          />
-          <label htmlFor="avatar" className={styles.users_input_file_custom}>
-            <span>Choose file to upload</span>
-          </label>
+          <div className={styles.users_wrapper_input}>
+            <input
+              id="avatar"
+              name="avatar"
+              type="file"
+              onChange={(e) => {
+                formikProps.setFieldValue("avatar", e.target.files[0]);
+              }}
+              className={styles.users_input_file}
+            />
+            <label
+              htmlFor="avatar"
+              className={cx(styles.users_input_file_custom, {
+                [styles.input_error]: formikProps.errors.avatar,
+              })}
+            >
+              <span>Choose file to upload</span>
+            </label>
+            <div
+              name="avatar"
+              component="div"
+              className={styles.input_err_text}
+            >
+              {formikProps.errors.avatar}
+            </div>
+          </div>
           <input
             type="submit"
             value="Create user"

@@ -1,10 +1,9 @@
 @import "../../../common/styles/colors";
+@import "../../../common/styles/template";
 
 .users_form {
   display: flex;
   flex-direction: column;
-
-  height: 280px;
 
   padding: 20px 15px;
   border-radius: 25px;
@@ -14,57 +13,38 @@
 
   background-color: $color-white;
 
-  .users_input,
-  .users_input_file_custom {
-    padding: 14px 10px;
-    border: none;
-    border-radius: 6px;
-    margin-bottom: 12px;
+  .users_wrapper_input {
+    height: 70px;
 
-    background-color: $color-light-grey;
-    color: $color-dark-grey-blue;
+    .users_input_file {
+      display: none;
+    }
 
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 1.2;
-  }
+    .users_input_file_custom {
+      @extend %input;
 
-  .users_input_file {
-    display: none;
-  }
+      cursor: pointer;
 
-  .users_input_file_custom {
-    cursor: pointer;
+      &.input_error {
+        @extend %err-border;
+      }
 
-    span {
-      padding: 6px 10px;
-      border-radius: 6px;
+      span {
+        padding: 6px 10px;
+        border-radius: 6px;
 
-      box-shadow: 0px 1px 2px 0px rgba(117, 125, 148, 1);
+        box-shadow: 0px 1px 2px 0px rgba(117, 125, 148, 1);
 
-      background-color: $color-white;
+        background-color: $color-white;
+      }
+    }
+
+    .input_err_text {
+      @extend %err-text;
     }
   }
 
   .users_input_submit {
-    display: block;
-    max-width: 200px;
-    width: 100%;
-
-    padding: 12px 10px;
-    border: none;
-    border-radius: 6px;
-    margin: 5px auto 0;
-
-    box-shadow: 0px 1px 2px 0px rgba(117, 125, 148, 1);
-
-    background-color: $color-lavender;
-    color: $color-white;
-
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 1.2;
-    text-transform: uppercase;
+    @extend %btn_submit;
   }
 }

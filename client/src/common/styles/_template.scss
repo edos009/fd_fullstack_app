@@ -1,9 +1,57 @@
-@import './colors';
+@import "./colors";
 
-%container{
+%container {
   max-width: 1230px;
   width: 100%;
 
   padding: 0 15px;
   margin: 0 auto;
+}
+
+%err-border {
+  border: 1px solid $color-light-red;
+}
+
+%err-text {
+  margin-top: 2px;
+
+  color: $color-light-red;
+}
+
+%input {
+  display: block;
+  width: 100%;
+
+  padding: 14px 10px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+
+  background-color: $color-light-grey;
+  color: $color-dark-grey-blue;
+
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.2em;
+}
+
+%btn_submit {
+  display: block;
+  max-width: 200px;
+  width: 100%;
+
+  padding: 12px 10px;
+  border: none;
+  border-radius: 6px;
+  margin: 5px auto 0;
+
+  box-shadow: 0px 1px 2px 0px rgba(117, 125, 148, 1);
+
+  background-color: $color-lavender;
+  color: $color-white;
+
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.2;
+  text-transform: uppercase;
 }

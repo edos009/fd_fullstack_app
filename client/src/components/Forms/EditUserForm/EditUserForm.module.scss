@@ -39,23 +39,6 @@
   }
 
   .edit_user_input_submit {
-    display: block;
-    max-width: 200px;
-    width: 100%;
-
-    padding: 12px 10px;
-    border: none;
-    border-radius: 6px;
-    margin: 5px auto 0;
-
-    box-shadow: 0px 1px 2px 0px rgba(117, 125, 148, 1);
-
-    background-color: $color-lavender;
-    color: $color-white;
-
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 1.2;
-    text-transform: uppercase;
+    @extend %btn_submit;
   }
 }

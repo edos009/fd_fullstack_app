@@ -1,0 +1,19 @@
+@import "../../../common/styles/colors";
+@import "../../../common/styles/template";
+
+.users_wrapper_input {
+  height: 70px;
+  margin-bottom: 5px;
+
+  .users_input {
+    @extend %input;
+
+    &.input_error {
+      @extend %err-border;
+    }
+  }
+
+  .input_err_text {
+    @extend %err-text;
+  }
+}
