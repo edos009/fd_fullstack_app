@@ -1,0 +1,36 @@
+@import "../../common/styles/template";
+@import "../../common/styles/colors";
+
+.error {
+  flex-grow: 1;
+  .container {
+    @extend %container;
+
+    .error_inner {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      margin-top: 140px;
+
+      .error_img{
+        display: block;
+
+        max-width: 400px;
+        width: 100%;
+      }
+
+      .error_text{
+        margin-top: 20px;
+        
+        color: $color-red;
+
+        font-weight: 700;
+        font-size: 40px;
+        line-height: 1.2em;
+        text-transform: uppercase;
+      }
+    }
+  }
+}

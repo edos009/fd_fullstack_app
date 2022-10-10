@@ -8,6 +8,7 @@ import UsersPage from "./pages/UsersPage";
 import UserInfoPage from "./pages/UserInfoPage";
 import UserTasksPage from "./pages/UserTasksPage";
 import TasksPage from "./pages/TasksPage";
+import ErrorPage from "./pages/ErrorPage";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/users/:userId" element={<UserInfoPage />} />
         <Route path="/users/:userId/tasks" element={<UserTasksPage />} />
         <Route path="/tasks" element={<TasksPage />} />
+        <Route path="/*" element={<ErrorPage />} />
       </Routes>
       <Footer />
     </>
