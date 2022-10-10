@@ -28,12 +28,6 @@ const UserEditFormWrapper = ({ user, formik }) => {
         placeholder="Login"
         className={styles.edit_user_input}
       />
-      <Field
-        name="password"
-        type="password"
-        placeholder="Password"
-        className={styles.edit_user_input}
-      />
       <input
         id="edit_avatar"
         name="avatar"
@@ -65,7 +59,6 @@ const UserEditForm = ({ user, setIsEditWindowActive }) => {
 
   const initialValues = {
     login: user.login || "",
-    password: "",
     avatar: user.avatar || "",
   };
 
