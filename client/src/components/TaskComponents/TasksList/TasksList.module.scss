@@ -16,34 +16,15 @@
     padding: 20px 15px;
     border-radius: 25px;
 
-    box-shadow: 0px 3px 5px 0px rgba(117, 125, 148, 1);
+    @extend %box-shadow-big;
 
     background-color: $color-white;
     .uwt_item_img {
-      display: block;
-
-      width: 140px;
-      height: 140px;
-
-      border-radius: 50%;
-      margin: 0 auto;
-
-      object-fit: cover;
-      object-position: center;
-
-      box-shadow: 0px 3px 5px 0px rgba(117, 125, 148, 1);
+      @extend %item_img;
     }
 
     .uwt_item_login {
-      margin-top: 15px;
-
-      color: $color-grey;
-
-      font-weight: 700;
-      font-size: 22px;
-      line-height: 1.2em;
-      text-transform: capitalize;
-      text-align: center;
+      @extend %item_login;
     }
 
     .uwt_item_box_count_tasks {
@@ -65,22 +46,15 @@
     }
 
     .uwt_btn_back {
-      display: block;
       max-width: 120px;
       width: 100%;
 
+      @extend %btn_style;
+
       padding: 8px;
-      border: none;
-      border-radius: 6px;
       margin: 15px auto 0;
 
-      background-color: $color-lavender;
-      color: $color-white;
-
-      font-weight: 700;
       font-size: 14px;
-      line-height: 1.2;
-      text-transform: uppercase;
     }
   }
 }

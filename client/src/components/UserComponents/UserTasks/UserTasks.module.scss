@@ -11,18 +11,12 @@
 
       .user_tasks_title {
         margin: 18px 0px 40px 0px;
+        
+        @extend %title;
 
         span {
-          padding: 10px 20px;
-          border-radius: 25px;
-          box-shadow: 0px 3px 5px 0px rgb(117 125 148);
-          background-color: #fff;
+          @extend %title_span;
 
-          color: #757d94;
-
-          font-weight: 700;
-          font-size: 35px;
-          line-height: 1.2em;
           text-transform: capitalize;
         }
       }
@@ -31,7 +25,7 @@
         padding: 25px 25px;
         border-radius: 25px;
 
-        box-shadow: 0px 3px 5px 0px rgba(117, 125, 148, 1);
+        @extend %box-shadow-big;
 
         background-color: $color-white;
 
@@ -41,12 +35,12 @@
           border-radius: 6px;
           margin-bottom: 12px;
 
-          box-shadow: 0px 1px 3px 0px rgba(117, 125, 148, 1);
+          @extend %box-shadow-small;
           background-color: $color-light-grey;
           opacity: 1;
           transition: opacity 1s ease-out;
 
-          &.user_tasks_list_item_bg{
+          &.user_tasks_list_item_bg {
             opacity: 0;
           }
 
@@ -59,7 +53,6 @@
 
               color: #757d94;
 
-              // font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
               font-weight: 700;
               font-size: 22px;
               line-height: 1.2;
@@ -113,7 +106,7 @@
                     top: 0;
                     right: 0;
 
-                    box-shadow: 0px 1px 3px 0px rgba(117, 125, 148, 1);
+                    @extend %box-shadow-small;
                     background-color: $color-light-grey;
                   }
                 }
@@ -129,7 +122,7 @@
 
                 border-radius: 6px;
 
-                box-shadow: 0px 1px 3px 0px rgba(117, 125, 148, 1);
+                @extend %box-shadow-small;
                 background-color: $color-light-grey;
 
                 .task_btn_edit,
@@ -140,7 +133,7 @@
                   border: none;
                   border-radius: 6px;
 
-                  box-shadow: 0px 0px 1px 0px rgba(117, 125, 148, 1);
+                  @extend %box-shadow-mini;
                   background-color: transparent;
 
                   background-repeat: no-repeat;
@@ -148,11 +141,11 @@
                 }
 
                 .task_btn_edit {
-                  background-image: url("../../../assets/images/edit.png");
+                  @extend %img_btn_edit;
                 }
 
                 .task_btn_delete {
-                  background-image: url("../../../assets/images/delete.png");
+                  @extend %img_btn_delete;
                 }
               }
             }
@@ -180,22 +173,12 @@
       }
 
       .user_tasks_btn_back {
-        display: block;
         max-width: 150px;
         width: 100%;
 
-        padding: 14px 10px;
-        border: none;
-        border-radius: 6px;
-        margin: 30px 0;
+        margin-top: 20px;
 
-        background-color: $color-lavender;
-        color: $color-white;
-
-        font-weight: 700;
-        font-size: 18px;
-        line-height: 1.2;
-        text-transform: uppercase;
+        @extend %btn_style;
       }
     }
   }

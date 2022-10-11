@@ -26,35 +26,15 @@
       border-radius: 25px;
 
       cursor: pointer;
-      box-shadow: 0px 3px 5px 0px rgba(117, 125, 148, 1);
-      
+      @extend %box-shadow-big;
 
       background-color: $color-white;
       .users_item_img {
-        display: block;
-
-        width: 140px;
-        height: 140px;
-
-        border-radius: 50%;
-        margin: 0 auto;
-
-        object-fit: cover;
-        object-position: center;
-
-        box-shadow: 0px 3px 5px 0px rgba(117, 125, 148, 1);
+        @extend %item_img;
       }
 
       .users_item_login {
-        margin-top: 15px;
-
-        color: $color-grey;
-
-        font-weight: 700;
-        font-size: 22px;
-        line-height: 1.2em;
-        text-transform: capitalize;
-        text-align: center;
+        @extend %item_login;
       }
 
       .users_control {
@@ -74,7 +54,7 @@
 
           border-radius: 6px;
 
-          box-shadow: 0px 1px 3px 0px rgba(117, 125, 148, 1);
+          @extend %box-shadow-small;
           background-color: $color-light-grey;
 
           .users_btn_edit,
@@ -85,7 +65,7 @@
             border: none;
             border-radius: 6px;
 
-            box-shadow: 0px 0px 1px 0px rgba(117, 125, 148, 1);
+            @extend %box-shadow-mini;
             background-color: transparent;
 
             background-repeat: no-repeat;
@@ -93,11 +73,11 @@
           }
 
           .users_btn_edit {
-            background-image: url("../../../assets/images/edit.png");
+            @extend %img_btn_edit;
           }
 
           .users_btn_delete {
-            background-image: url("../../../assets/images/delete.png");
+            @extend %img_btn_delete;
           }
         }
       }
@@ -123,7 +103,7 @@
       padding: 3px;
       border-radius: 3px;
 
-      box-shadow: 0px 0px 2px 0px rgba(117, 125, 148, 1);
+      @extend %box-shadow-mini;
       cursor: pointer;
 
       background-color: $color-grey;
