@@ -56,7 +56,7 @@ const TaskEditFormWrapper = ({ task, formik }) => {
 };
 
 const TaskEditForm = ({ userId, task, setIsUserTaskEditWindowActive }) => {
-  const { updateUserTaskRequest, deleteUserTaskRequest } = bindActionCreators(
+  const { updateUserTaskRequest } = bindActionCreators(
     ActionUserCreator,
     useDispatch()
   );
@@ -71,9 +71,6 @@ const TaskEditForm = ({ userId, task, setIsUserTaskEditWindowActive }) => {
     updateUserTaskRequest({ values: values, userId, taskId: task.id });
     setIsUserTaskEditWindowActive(false);
 
-    if (values.isDone) {
-      deleteUserTaskRequest({ userId, taskId: task.id });
-    }
     formicBag.resetForm();
   };
   return (

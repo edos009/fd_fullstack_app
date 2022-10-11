@@ -11,7 +11,7 @@
 
       .user_tasks_title {
         margin: 18px 0px 40px 0px;
-        
+
         @extend %title;
 
         span {
@@ -19,6 +19,23 @@
 
           text-transform: capitalize;
         }
+      }
+
+      .user_tasks_sort {
+        display: block;
+
+        padding: 10px;
+        border: none;
+        border-radius: 6px;
+        margin: 0 0 10px auto;
+
+        @extend %box-shadow-small;
+        background-color: $color-white;
+        color: $color-dark-grey-blue;
+
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 1.2em;
       }
 
       .user_tasks_list {
@@ -37,12 +54,6 @@
 
           @extend %box-shadow-small;
           background-color: $color-light-grey;
-          opacity: 1;
-          transition: opacity 1s ease-out;
-
-          &.user_tasks_list_item_bg {
-            opacity: 0;
-          }
 
           .task_container {
             display: flex;
