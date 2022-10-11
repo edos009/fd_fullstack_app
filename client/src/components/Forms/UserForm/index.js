@@ -5,11 +5,11 @@ import { bindActionCreators } from "redux";
 
 import * as ActionUserCreator from "../../../actions/userCreators";
 import CONSTANTS from "../../../constants";
-
-import styles from "./UserForm.module.scss";
+import InputFileForm from "../InputFileForm";
 import InputForm from "../InputForm";
 import { schema_create_user } from "../../../utils/schemas";
-import InputFileForm from "../InputFileForm";
+
+import styles from "./UserForm.module.scss";
 
 const {
   PAGES: { LIMIT },

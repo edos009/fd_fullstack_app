@@ -1,11 +1,11 @@
 @import "../../../common/styles/colors";
 @import "../../../common/styles/template";
 
-.users_wrapper_input {
+.users_wrapper_input, .task_wrapper_input {
   height: 70px;
   margin-bottom: 5px;
 
-  .users_input {
+  .users_input, .task_input {
     @extend %input;
 
     &.input_error {

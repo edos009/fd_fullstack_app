@@ -1,9 +1,11 @@
 import React from "react";
-import { Form, Formik, Field } from "formik";
+import { Form, Formik } from "formik";
 import { useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
 
 import * as ActionUserCreator from "../../../actions/userCreators";
+import InputForm from "../InputForm";
+import { schema_create_task } from "../../../utils/schemas";
 
 import styles from "./CreateTaskForm.module.scss";
 
@@ -23,24 +25,30 @@ const CreateTaskForm = ({ userId }) => {
     formicBag.resetForm();
   };
   return (
-    <Formik initialValues={initialValues} onSubmit={onSubmit}>
-        <Form className={styles.task_form}>
-          <Field
-            name="content"
-            placeholder="Task content"
-            className={styles.task_input}
-          />
-          <Field
-            name="deadLine"
-            placeholder="Task end date"
-            className={styles.task_input}
-          />
-          <input
-            type="submit"
-            value="Create task"
-            className={styles.task_input_submit}
-          />
-        </Form>
+    <Formik
+      initialValues={initialValues}
+      onSubmit={onSubmit}
+      validationSchema={schema_create_task}
+    >
+      <Form className={styles.task_form}>
+        <InputForm
+          name="content"
+          placeholder="Task content"
+          inputClass="task_input"
+          wrapperClass="task_wrapper_input"
+        />
+        <InputForm
+          name="deadLine"
+          placeholder="Task end date"
+          inputClass="task_input"
+          wrapperClass="task_wrapper_input"
+        />
+        <input
+          type="submit"
+          value="Create task"
+          className={styles.task_input_submit}
+        />
+      </Form>
     </Formik>
   );
 };
