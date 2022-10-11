@@ -46,7 +46,7 @@ export const schema_edit_user = Yup.object({
   avatar: schema_avatar,
 });
 
-export const schema_create_task = Yup.object({
+export const schema_task = Yup.object({
   content: schema_content,
   deadLine: schema_deadLine,
 });

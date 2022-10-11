@@ -1,9 +1,11 @@
-import { Form, Formik, Field } from "formik";
+import { Form, Formik } from "formik";
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
 
 import * as ActionUserCreator from "../../../actions/userCreators";
+import { schema_task } from "../../../utils/schemas";
+import InputForm from "../InputForm";
 
 import styles from "./TaskEditForm.module.scss";
 
@@ -23,10 +25,11 @@ const TaskEditFormWrapper = ({ task, formik }) => {
 
   return (
     <Form className={styles.edit_task_form}>
-      <Field
+      <InputForm
         name="content"
-        placeholder="Content"
-        className={styles.edit_task_input}
+        placeholder="Task Content"
+        inputClass="edit_task_input"
+        wrapperClass="edit_task_wrapper_input"
       />
       <div className={styles.edit_task_checkbox_wrapper}>
         <input
@@ -43,10 +46,11 @@ const TaskEditFormWrapper = ({ task, formik }) => {
           Execution Status:
         </label>
       </div>
-      <Field
+      <InputForm
         name="deadLine"
         placeholder="Dead Line"
-        className={styles.edit_task_input}
+        inputClass="edit_task_input"
+        wrapperClass="edit_task_wrapper_input"
       />
       <input
         type="submit"
@@ -79,7 +83,11 @@ const TaskEditForm = ({ userId, task, setIsUserTaskEditWindowActive }) => {
     formicBag.resetForm();
   };
   return (
-    <Formik initialValues={initialValues} onSubmit={onSubmit}>
+    <Formik
+      initialValues={initialValues}
+      onSubmit={onSubmit}
+      validationSchema={schema_task}
+    >
       {(formikProps) => (
         <TaskEditFormWrapper task={task} formik={formikProps} />
       )}

@@ -5,7 +5,7 @@ import { bindActionCreators } from "redux";
 
 import * as ActionUserCreator from "../../../actions/userCreators";
 import InputForm from "../InputForm";
-import { schema_create_task } from "../../../utils/schemas";
+import { schema_task } from "../../../utils/schemas";
 
 import styles from "./CreateTaskForm.module.scss";
 
@@ -28,7 +28,7 @@ const CreateTaskForm = ({ userId }) => {
     <Formik
       initialValues={initialValues}
       onSubmit={onSubmit}
-      validationSchema={schema_create_task}
+      validationSchema={schema_task}
     >
       <Form className={styles.task_form}>
         <InputForm
