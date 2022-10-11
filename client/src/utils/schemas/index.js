@@ -5,9 +5,10 @@ export const schema_login = Yup.string("Input value must be string")
   .required("This field is required");
 
 export const schema_password = Yup.string("Input value must be string")
+  .min(8, "Password must be at least 8 characters")
   .matches(
     /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/,
-    "Invalid password"
+    "Invalid password, password example: Aaaaaa1$"
   )
   .required("This field is required");
 
