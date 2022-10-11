@@ -29,8 +29,12 @@ export const deleteUserById = (userId) => {
 export const updateUser = ({ data, userId }) => {
   const form = new FormData();
   form.append("login", data.login);
-  form.append("password", data.password);
-  form.append("avatar", data.avatar);
+  if (data.password) {
+    form.append("password", data.password);
+  }
+  if (data.avatar) {
+    form.append("avatar", data.avatar);
+  }
 
   return httpClient.patch(`/users/${userId}`, form, {
     headers: {
@@ -51,7 +55,7 @@ export const getUserTasks = (userId) => {
   return httpClient.get(`/users/${userId}/tasks`);
 };
 
-export const deleteUserTaskById = ({userId, taskId}) => {
+export const deleteUserTaskById = ({ userId, taskId }) => {
   return httpClient.delete(`/users/${userId}/tasks/${taskId}`);
 };
 
@@ -59,9 +63,7 @@ export const updateTask = ({ data, userId, taskId }) => {
   return httpClient.patch(`/users/${userId}/tasks/${taskId}`, data);
 };
 
-export const getAllTasks = () =>
-  httpClient.get(`/tasks`);
-
+export const getAllTasks = () => httpClient.get(`/tasks`);
 
 // export const createTask = ({ data, userId }) => {
 //   console.log(data);

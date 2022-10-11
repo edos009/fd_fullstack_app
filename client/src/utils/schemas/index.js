@@ -29,3 +29,8 @@ export const schema_create_user = Yup.object({
   password: schema_password,
   avatar: schema_avatar,
 });
+
+export const schema_edit_user = Yup.object({
+  login: schema_login,
+  avatar: schema_avatar,
+});

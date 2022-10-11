@@ -26,15 +26,16 @@ module.exports.createUser = async (req, res, next) => {
 module.exports.getUsers = async (req, res, next) => {
   try {
     const { pagination = {} } = req;
-    const totalCount = (await User.findAll()).length;
+    const { count } = await User.findAndCountAll();
     const users = await User.findAll({
       attributes: { exclude: ["password"] },
+      order: [["id", "ASC"]],
       ...pagination,
     });
     if (!users) {
       next(createError(404, "Users not found!"));
     }
-    res.status(200).send({ data: { users, totalCount } });
+    res.status(200).send({ data: { users, totalCount: count } });
   } catch (error) {
     next(error);
   }

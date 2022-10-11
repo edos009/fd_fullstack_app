@@ -1,4 +1,4 @@
-import { Form, Formik, Field } from "formik";
+import { Form, Formik } from "formik";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -7,6 +7,9 @@ import CONSTANTS from "../../../constants";
 import * as ActionUserCreator from "../../../actions/userCreators";
 
 import styles from "./EditUserForm.module.scss";
+import InputForm from "../InputForm";
+import InputFileForm from "../InputFileForm";
+import { schema_edit_user } from "../../../utils/schemas";
 
 const {
   PAGES: { LIMIT },
@@ -16,14 +19,14 @@ const UserEditFormWrapper = ({ user, formik }) => {
   useEffect(() => {
     if (typeof user.login === "string") {
       formik.setFieldValue("login", user.login);
-      formik.setFieldValue("avatar", user.avatar);
+      // formik.setFieldValue("avatar", user.avatar);
     }
     // eslint-disable-next-line
   }, [user]);
 
   return (
     <Form className={styles.edit_user_form}>
-      <Field
+      {/* <Field
         name="login"
         placeholder="Login"
         className={styles.edit_user_input}
@@ -40,7 +43,22 @@ const UserEditFormWrapper = ({ user, formik }) => {
         className={styles.edit_user_input_file_custom}
       >
         <span>Choose file to upload</span>
-      </label>
+      </label> */}
+      <InputForm
+        name="login"
+        placeholder="Login"
+        inputClass="users_input"
+        wrapperClass="users_wrapper_input"
+      />
+      <InputFileForm
+        id="edit-avatar"
+        name="avatar"
+        type="file"
+        formik={formik}
+        inputFileClass="users_input_file"
+        inputFileCustomClass="users_input_file_custom"
+        wrapperClass="users_wrapper_input"
+      />
       <input
         type="submit"
         value="Save"
@@ -63,7 +81,7 @@ const UserEditForm = ({ user, setIsEditWindowActive }) => {
   };
 
   const onSubmit = (values, formicBag) => {
-    updateUserRequest({ values: values, userId: user.id });
+    updateUserRequest({ values, userId: user.id });
     setIsEditWindowActive(false);
     formicBag.resetForm();
     setTimeout(() => {
@@ -71,7 +89,11 @@ const UserEditForm = ({ user, setIsEditWindowActive }) => {
     }, 100);
   };
   return (
-    <Formik initialValues={initialValues} onSubmit={onSubmit}>
+    <Formik
+      initialValues={initialValues}
+      onSubmit={onSubmit}
+      validationSchema={schema_edit_user}
+    >
       {(formikProps) => (
         <UserEditFormWrapper user={user} formik={formikProps} />
       )}

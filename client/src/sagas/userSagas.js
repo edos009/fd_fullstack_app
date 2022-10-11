@@ -117,7 +117,7 @@ export function* updateUserTaskSaga(action) {
       taskId: action.payload.taskId,
     });
     yield put(ActionUserCreator.updateUserTaskSuccess(data));
-    yield put(ActionUserCreator.getUserTasksRequest(action.payload.userId))
+    yield put(ActionUserCreator.getUserTasksRequest(action.payload.userId));
   } catch (error) {
     yield put(ActionUserCreator.updateUserTaskError(error));
   }

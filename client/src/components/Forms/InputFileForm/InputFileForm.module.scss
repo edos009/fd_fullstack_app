@@ -1,0 +1,33 @@
+@import "../../../common/styles/colors";
+@import "../../../common/styles/template";
+
+.users_wrapper_input {
+  height: 70px;
+
+  .users_input_file {
+    display: none;
+  }
+
+  .users_input_file_custom {
+    @extend %input;
+
+    cursor: pointer;
+
+    &.input_error {
+      @extend %err-border;
+    }
+
+    span {
+      padding: 6px 10px;
+      border-radius: 6px;
+
+      box-shadow: 0px 1px 2px 0px rgba(117, 125, 148, 1);
+
+      background-color: $color-white;
+    }
+  }
+
+  .input_err_text {
+    @extend %err-text;
+  }
+}
