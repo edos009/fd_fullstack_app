@@ -5,6 +5,7 @@ import { bindActionCreators } from "redux";
 
 import * as ActionUserCreator from "../../../actions/userCreators";
 import { schema_task } from "../../../utils/schemas";
+import InputCheckbox from "../InputCheckbox";
 import InputForm from "../InputForm";
 
 import styles from "./TaskEditForm.module.scss";
@@ -31,21 +32,14 @@ const TaskEditFormWrapper = ({ task, formik }) => {
         inputClass="edit_task_input"
         wrapperClass="edit_task_wrapper_input"
       />
-      <div className={styles.edit_task_checkbox_wrapper}>
-        <input
-          id="isDone"
-          className={styles.edit_task_checkbox}
-          type="checkbox"
-          name="isDone"
-          value={formik.values.isDone}
-          checked={formik.values.isDone}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-        />
-        <label htmlFor="isDone" className={styles.edit_task_custom_checkbox}>
-          Execution Status:
-        </label>
-      </div>
+      <InputCheckbox
+        name="isDone"
+        id="isDone"
+        formik={formik}
+        inputCheckboxWrapper="edit_task_checkbox_wrapper"
+        inputCheckbox="edit_task_checkbox"
+        inputCustomCheckbox="edit_task_custom_checkbox"
+      />
       <InputForm
         name="deadLine"
         placeholder="Dead Line"

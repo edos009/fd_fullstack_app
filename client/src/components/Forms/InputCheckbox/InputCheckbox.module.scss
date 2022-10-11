@@ -1,0 +1,52 @@
+@import "../../../common/styles/colors";
+@import "../../../common/styles/template";
+
+.edit_task_checkbox_wrapper {
+  margin-bottom: 20px;
+
+  @extend %input;
+
+  .edit_task_checkbox {
+    display: none;
+
+    &:checked + label::before {
+      content: "";
+      position: absolute;
+
+      top: -1px;
+      right: 4px;
+
+      width: 22px;
+      height: 22px;
+
+      z-index: 99;
+
+      background-color: $color-dark-grey-blue;
+    }
+  }
+
+  .edit_task_custom_checkbox {
+    position: relative;
+
+    padding-right: 45px;
+
+    &::after,
+    &::before {
+      border-radius: 6px;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+
+      width: 30px;
+      height: 30px;
+
+      top: -5px;
+      right: 0;
+
+      box-shadow: 0px 1px 2px 0px rgba(117, 125, 148, 1);
+      background-color: $color-white;
+    }
+  }
+}
