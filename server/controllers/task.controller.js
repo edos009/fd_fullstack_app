@@ -26,7 +26,7 @@ module.exports.getTasksUser = async (req, res, next) => {
   try {
     const { instanceUser } = req;
 
-    const tasks = await instanceUser.getTasks({ order: [["id", "ASC"]] });
+    const tasks = await instanceUser.getTasks();
 
     if (!tasks) {
       next(createError(404, "Tasks not found."));

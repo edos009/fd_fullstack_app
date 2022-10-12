@@ -47,20 +47,18 @@ const UserInfo = ({ isShowUsers }) => {
 
   const deleteUser = (id) => {
     deleteUserRequest(id);
-    if (users.length - 1 === 0 && totalUsersCount - 1 !== 0) {
-      setOffset(offset - LIMIT);
 
-      setTimeout(() => {
-        getUsersRequest({
-          limit: LIMIT,
-          offset: offset - LIMIT,
-        });
-      }, 100);
-    } else {
-      setTimeout(() => {
-        getUsersRequest({ limit: LIMIT, offset });
-      }, 100);
+    const condOffset = users.length - 1 === 0 && totalUsersCount - 1 !== 0;
+    if (condOffset) {
+      setOffset(offset - LIMIT);
     }
+
+    setTimeout(() => {
+      getUsersRequest({
+        limit: LIMIT,
+        offset: condOffset ? offset - LIMIT : offset,
+      });
+    }, 100);
   };
 
   return (
@@ -113,7 +111,9 @@ const UserInfo = ({ isShowUsers }) => {
       <div className={styles.users_pages}>
         {getPages().map((elem, i) => (
           <span
-            className={offset / LIMIT === elem ? styles.users_active_page : ""}
+            className={cx({
+              [styles.users_active_page]: offset / LIMIT === elem,
+            })}
             key={i}
             onClick={() => {
               setOffset(elem * LIMIT);
