@@ -2,7 +2,11 @@
 @import "../../common/styles/template";
 
 .logo {
+  position: relative;
+
   color: $color-white;
+
+  z-index: 3;
   
   font-weight: 700;
   font-size: 30px;

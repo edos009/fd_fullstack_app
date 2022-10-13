@@ -1,25 +1,27 @@
-*, *::after, *::before{
+*,
+*::after,
+*::before {
   padding: 0;
   margin: 0;
 
   box-sizing: border-box;
 }
 
-ul{
+ul {
   list-style: none;
   padding-left: 0;
 }
 
-a{
+a {
   text-decoration: none;
   color: inherit;
 }
 
-body{
+body {
   background-color: #ebecf7;
   color: #c3cdd2;
 
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 500;
   font-size: 14px;
   line-height: 1.2em;
@@ -27,7 +29,15 @@ body{
   overflow-x: hidden;
 }
 
-#root{
+body.lock {
+  overflow: hidden;
+}
+
+body.body_scroll{
+  overflow-y: hidden;
+}
+
+#root {
   display: flex;
   flex-direction: column;
   height: 100vh;

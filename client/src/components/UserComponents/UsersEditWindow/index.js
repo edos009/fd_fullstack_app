@@ -23,9 +23,8 @@ const UsersEditWindow = ({
     const body = document.querySelector("body");
     if (isEditWindowActive) {
       body.classList.add("body_scroll");
-      body.style.overflowY = "hidden";
     } else {
-      body.style.overflowY = "visible";
+      body.classList.remove("body_scroll");
     }
   }, [isEditWindowActive]);
 

@@ -5,9 +5,26 @@
 
   width: 100%;
 
+  top: 0;
+  left: 0;
+
   z-index: 1000;
   box-shadow: 0px 1px 4px 0px $color-dark-grey-blue;
-  background-color: $color-lavender;
+
+  &::before {
+    content: "";
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 2;
+
+    background-color: $color-lavender;
+  }
 
   .container {
     @extend %container;
@@ -17,15 +34,76 @@
       justify-content: space-between;
       align-items: center;
 
+      position: relative;
+
       height: 70px;
 
-      .box_theme {
-        margin-left: auto;
+      .header_burger {
+        display: none;
 
-        cursor: pointer;
+        @media (max-width: 767px) {
+          display: block;
 
-        .btn_theme {
-          font-size: 30px;
+          position: relative;
+
+          width: 30px;
+          height: 25px;
+
+          cursor: pointer;
+
+          z-index: 3;
+
+          & span {
+            position: absolute;
+
+            width: 100%;
+            height: 3px;
+
+            top: 11px;
+            left: 0;
+
+            background-color: $color-light-grey;
+
+            transition: all 0.3s ease;
+          }
+
+          &::after,
+          &::before {
+            content: "";
+
+            position: absolute;
+
+            width: 100%;
+            height: 3px;
+
+            left: 0;
+
+            background-color: $color-light-grey;
+
+            transition: all 0.3s ease;
+          }
+
+          &::after {
+            bottom: 0;
+          }
+
+          &::before {
+            top: 0;
+          }
+
+          &.active::before {
+            top: 11px;
+            transform: rotate(45deg);
+          }
+
+          &.active::after {
+            bottom: 11px;
+            transform: rotate(-45deg);
+          }
+
+          &.active span {
+            transform: scale(0);
+          }
         }
       }
     }

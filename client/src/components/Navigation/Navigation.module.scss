@@ -1,8 +1,43 @@
+@import "../../common/styles/colors";
+
 .nav {
-  margin-left: 150px;
+  // margin-left: 150px;
+
+  @media (max-width: 767px) {
+    position: fixed;
+
+    top: -100%;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    padding: 110px 0 0 0;
+
+    background-color: $color-lavender-light;
+
+    transition: all .3s ease;
+    overflow: auto;
+
+    &.active{
+      top: 0;
+    }
+  }
 
   &_list {
     display: flex;
     gap: 20px;
+
+    position: relative;
+
+    z-index: 2;
+
+    @media (max-width: 767px) {
+      flex-direction: column;
+      gap: 15px;
+
+      justify-content: center;
+      align-items: center;
+    }
   }
 }
