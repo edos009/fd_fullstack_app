@@ -16,11 +16,17 @@
 
         position: relative;
 
+        @media (max-width: 992px) {
+          flex-direction: column;
+        }
+
         .user_box_info {
           display: flex;
           flex-direction: column;
           align-items: center;
-          flex-basis: 400px;
+
+          max-width: 400px;
+          width: 100%;
           height: 400px;
 
           padding: 25px 25px;
@@ -29,6 +35,10 @@
           @extend %box-shadow-big;
 
           background-color: $color-white;
+
+          @media (max-width: 350px) {
+            height: 380px;
+          }
 
           .user_avatar {
             display: block;
@@ -39,6 +49,14 @@
             margin-bottom: 10px;
 
             @extend %box-shadow-big;
+
+            @media (max-width: 400px) {
+              width: 270px;
+            }
+
+            @media (max-width: 350px) {
+              width: 250px;
+            }
           }
 
           .user_login {
@@ -50,7 +68,8 @@
         }
 
         .user_info_wrapper_form {
-          flex-basis: 600px;
+          max-width: 600px;
+          width: 100%;
           height: 400px;
 
           padding: 25px 25px;
@@ -68,6 +87,11 @@
             font-weight: 700;
             font-size: 35px;
             line-height: 1.2em;
+
+            @media (max-width: 350px) {
+              font-size: 33px;
+              text-align: center;
+            }
 
             span {
               padding: 10px 20px;
@@ -89,6 +113,18 @@
             right: 85px;
 
             transform: rotate(10deg);
+
+            @media (max-width: 1220px) {
+              right: 20px;
+            }
+
+            @media (max-width: 1100px) {
+              right: 0;
+            }
+
+            @media (max-width: 992px) {
+              display: none;
+            }
           }
         }
       }
@@ -99,6 +135,7 @@
         gap: 15px;
 
         margin-top: 50px;
+        margin-bottom: 20px;
 
         .user_info_btn_show,
         .user_info_btn_back {

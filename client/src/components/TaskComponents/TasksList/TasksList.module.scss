@@ -7,7 +7,11 @@
   align-items: center;
   gap: 15px;
 
-  margin-bottom: 40px;
+  margin: 0 0 40px 0;
+
+  @media (max-width: 1230px) {
+    justify-content: center;
+  }
 
   .uwt_item {
     flex-basis: 228px;
@@ -19,6 +23,15 @@
     @extend %box-shadow-big;
 
     background-color: $color-white;
+
+    @media (max-width: 992px) {
+      height: 310px;
+    }
+
+    @media (max-width: 576px) {
+      height: 335px;
+    }
+
     .uwt_item_img {
       @extend %item_img;
     }

@@ -158,9 +158,12 @@
 
   transform: translate(-50%, -50%);
   z-index: 1001;
-  overflow-y: auto;
 
   transition: left 0.8s ease-in-out;
+
+  @media (max-height: 735px) {
+    overflow-y: auto;
+  }
 }
 
 %window_edit_wrapper {

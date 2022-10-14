@@ -14,6 +14,11 @@
 
         @extend %title;
 
+        @media (max-width: 400px) {
+          font-size: 29px;
+          text-align: center;
+        }
+
         span {
           @extend %title_span;
         }
@@ -28,6 +33,14 @@
         margin-left: auto;
         margin-bottom: 15px;
 
+        @media (max-width: 1230px) {
+          margin: 40px auto 15px;
+        }
+
+        @media (max-width: 992px) {
+          margin: 40px auto 25px;
+        }
+
         &::after {
           content: "";
           position: absolute;
@@ -38,7 +51,7 @@
           top: 10px;
           right: 12px;
 
-          background-image: url('../../../assets/images/search.png');
+          background-image: url("../../../assets/images/search.png");
           background-repeat: no-repeat;
           background-size: cover;
           background-position: center;
