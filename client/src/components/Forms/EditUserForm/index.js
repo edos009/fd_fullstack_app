@@ -19,31 +19,12 @@ const UserEditFormWrapper = ({ user, formik }) => {
   useEffect(() => {
     if (typeof user.login === "string") {
       formik.setFieldValue("login", user.login);
-      // formik.setFieldValue("avatar", user.avatar);
     }
     // eslint-disable-next-line
   }, [user]);
 
   return (
     <Form className={styles.edit_user_form}>
-      {/* <Field
-        name="login"
-        placeholder="Login"
-        className={styles.edit_user_input}
-      />
-      <input
-        id="edit_avatar"
-        name="avatar"
-        type="file"
-        onChange={(e) => formik.setFieldValue("avatar", e.target.files[0])}
-        className={styles.edit_user_input_file}
-      />
-      <label
-        htmlFor="edit_avatar"
-        className={styles.edit_user_input_file_custom}
-      >
-        <span>Choose file to upload</span>
-      </label> */}
       <InputForm
         name="login"
         placeholder="Login"

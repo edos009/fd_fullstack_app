@@ -14,25 +14,38 @@
     @extend %window_edit_visible;
   }
 
-  .btn_wrapper {
-    @extend %btn_close_wrapper;
-    .btn_close {
-      @extend %btn_close;
+  .users_edit_window_wrapper {
+    @extend %window_edit_wrapper;
+    .btn_wrapper {
+      @extend %btn_close_wrapper;
+      .btn_close {
+        @extend %btn_close;
+      }
     }
-  }
 
-  .title {
-    margin: -20px 0px 40px 25px;
+    .title {
+      margin: -20px 0px 40px 25px;
 
-    @extend %title;
+      @media (max-width: 440px) {
+        margin: -20px 0px 40px 0px;
+      }
 
-    span {
-      @extend %title_span;
+      @extend %title;
+
+      span {
+        @extend %title_span;
+      }
     }
-  }
 
-  .edit_img {
-    display: block;
-    margin: 50px auto 0;
+    .edit_box_img {
+      max-width: 400px;
+      width: 100%;
+      margin: 40px auto 0;
+
+      .edit_img {
+        display: block;
+        width: 100%;
+      }
+    }
   }
 }

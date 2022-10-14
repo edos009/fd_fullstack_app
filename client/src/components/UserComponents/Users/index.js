@@ -14,14 +14,14 @@ const Users = () => {
       <section className={styles.users}>
         <div className={styles.container}>
           <div className={styles.users_inner}>
+            <div className={styles.users_title}>
+              <span>Create User</span>
+            </div>
             <div className={styles.users_create_box}>
               <div className={styles.users_box_img}>
                 <img className={styles.users_img} src={createUser} alt="" />
               </div>
               <div className={styles.users_wrapper_form}>
-                <div className={styles.users_title}>
-                  <span>Create User</span>
-                </div>
                 <UserForm />
               </div>
             </div>

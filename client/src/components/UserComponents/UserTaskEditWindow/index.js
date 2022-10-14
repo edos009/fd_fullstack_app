@@ -32,21 +32,25 @@ const UserTaskEditWindow = ({
     <>
       <div className={stylesWindowBack}></div>
       <div className={stylesUserTaskEditWindow}>
-        <div className={styles.btn_wrapper}>
-          <button
-            onClick={() => setIsUserTaskEditWindowActive(false)}
-            className={styles.btn_close}
-          ></button>
+        <div className={styles.users_edit_window_wrapper}>
+          <div className={styles.btn_wrapper}>
+            <button
+              onClick={() => setIsUserTaskEditWindowActive(false)}
+              className={styles.btn_close}
+            ></button>
+          </div>
+          <h2 className={styles.title}>
+            <span>Edit Task</span>
+          </h2>
+          <TaskEditForm
+            userId={userId}
+            task={task}
+            setIsUserTaskEditWindowActive={setIsUserTaskEditWindowActive}
+          />
+          <div className={styles.edit_box_img}>
+            <img className={styles.edit_img} src={editTask} alt="" />
+          </div>
         </div>
-        <h2 className={styles.title}>
-          <span>Edit Task</span>
-        </h2>
-        <TaskEditForm
-          userId={userId}
-          task={task}
-          setIsUserTaskEditWindowActive={setIsUserTaskEditWindowActive}
-        />
-        <img className={styles.edit_img} src={editTask} alt="" />
       </div>
     </>
   );

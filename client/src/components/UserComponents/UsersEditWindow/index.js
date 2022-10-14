@@ -32,20 +32,24 @@ const UsersEditWindow = ({
     <>
       <div className={stylesWindowBack}></div>
       <div className={stylesUsersEditWindow}>
-        <div className={styles.btn_wrapper}>
-          <button
-            onClick={() => setIsEditWindowActive(false)}
-            className={styles.btn_close}
-          ></button>
+        <div className={styles.users_edit_window_wrapper}>
+          <div className={styles.btn_wrapper}>
+            <button
+              onClick={() => setIsEditWindowActive(false)}
+              className={styles.btn_close}
+            ></button>
+          </div>
+          <h2 className={styles.title}>
+            <span>Edit User</span>
+          </h2>
+          <UserEditForm
+            user={user}
+            setIsEditWindowActive={setIsEditWindowActive}
+          />
+          <div className={styles.edit_box_img}>
+            <img className={styles.edit_img} src={editUser} alt="" />
+          </div>
         </div>
-        <h2 className={styles.title}>
-          <span>Edit User</span>
-        </h2>
-        <UserEditForm
-          user={user}
-          setIsEditWindowActive={setIsEditWindowActive}
-        />
-        <img className={styles.edit_img} src={editUser} alt="" />
       </div>
     </>
   );

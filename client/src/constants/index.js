@@ -17,7 +17,7 @@ const CONSTANTS = {
     ]
   },
   PAGES: {
-    LIMIT: 5,
+    LIMIT: 6,
   }
 };
 
