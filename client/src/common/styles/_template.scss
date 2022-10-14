@@ -148,8 +148,8 @@
 
   max-width: 500px;
   width: 100%;
-
-  height: 735px;
+  max-height: 735px;
+  height: 100%;
 
   top: 50%;
   left: 300%;
@@ -158,6 +158,7 @@
 
   transform: translate(-50%, -50%);
   z-index: 1001;
+  overflow-y: auto;
 
   transition: left 0.8s ease-in-out;
 }
