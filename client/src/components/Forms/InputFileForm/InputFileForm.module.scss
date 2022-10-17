@@ -47,6 +47,10 @@
       padding: 0;
       background-color: transparent;
       box-shadow: none;
+
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 

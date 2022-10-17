@@ -11,7 +11,6 @@ const InputFileForm = ({
   wrapperClass,
   inputFileCustomClass,
 }) => {
-
   console.log(formik);
 
   return (
@@ -32,7 +31,14 @@ const InputFileForm = ({
         })}
       >
         <span>Choose file to upload</span>
-        <span className={styles.selected_file}>{formik.values.avatar ? formik.values?.avatar.name : 'File not selected'}</span>
+        <span
+          className={styles.selected_file}
+          title={formik.values?.avatar.name}
+        >
+          {formik.values.avatar
+            ? formik.values?.avatar.name
+            : "File not selected"}
+        </span>
       </label>
       <div className={styles.input_err_text}>{formik.errors[`${name}`]}</div>
     </div>
