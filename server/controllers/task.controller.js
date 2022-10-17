@@ -3,11 +3,15 @@ const { Op } = require("sequelize");
 const _ = require("lodash");
 const createError = require("http-errors");
 
+const pickValue = (body, fields) => {
+  return _.pick(body, fields);
+};
+
 /* Create Task */
 module.exports.createTask = async (req, res, next) => {
   try {
     const { body, instanceUser } = req;
-    const values = _.pick(body, ["content", "isDone", "deadLine"]);
+    const values = pickValue(body, ["content", "isDone", "deadLine"]);
 
     const task = await instanceUser.createTask(values);
 
@@ -45,7 +49,7 @@ module.exports.updateTask = async (req, res, next) => {
       body,
       params: { userId, taskId },
     } = req;
-    const values = _.pick(body, ["content", "isDone", "deadLine"]);
+    const values = pickValue(body, ["content", "isDone", "deadLine"]);
 
     const [task] = await Task.findAll({
       where: {

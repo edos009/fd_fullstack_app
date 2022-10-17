@@ -14,9 +14,8 @@
     @extend %window_edit_visible;
   }
 
-  .users_edit_window_wrapper {
+  .task_edit_window_wrapper {
     @extend %window_edit_wrapper;
-
     .btn_wrapper {
       @extend %btn_close_wrapper;
       .btn_close {
@@ -41,11 +40,16 @@
     .edit_box_img {
       max-width: 400px;
       width: 100%;
+      height: 300px;
+
       margin: 40px auto 0;
 
       .edit_img {
         display: block;
         width: 100%;
+        height: 100%;
+
+        object-fit: contain;
       }
     }
   }

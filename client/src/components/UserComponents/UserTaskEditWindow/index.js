@@ -32,7 +32,7 @@ const UserTaskEditWindow = ({
     <>
       <div className={stylesWindowBack}></div>
       <div className={stylesUserTaskEditWindow}>
-        <div className={styles.users_edit_window_wrapper}>
+        <div className={styles.task_edit_window_wrapper}>
           <div className={styles.btn_wrapper}>
             <button
               onClick={() => setIsUserTaskEditWindowActive(false)}

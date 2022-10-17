@@ -2,6 +2,14 @@ const createError = require("http-errors");
 const _ = require("lodash");
 const { User } = require("../models");
 
+const pickValue = (body, fields) => {
+  return _.pick(body, fields);
+};
+
+const omitFields = (user, fields) => {
+  return _.omit(user, fields);
+}
+
 /* Create User */
 module.exports.createUser = async (req, res, next) => {
   try {
@@ -9,13 +17,13 @@ module.exports.createUser = async (req, res, next) => {
     if (req.file) {
       body.avatar = req.file.filename;
     }
-    const values = _.pick(body, ["login", "password", "avatar"]);
+    const values = pickValue(body, ["login", "password", "avatar"]);
 
     const user = await User.create(values);
     if (!user) {
       next(createError(400, "Invalid data"));
     }
-    const userPrepare = _.omit(await user.get(), ["password"]);
+    const userPrepare = omitFields(await user.get(), ["password"]);
     res.status(201).send({ data: userPrepare });
   } catch (error) {
     next(error);
@@ -45,7 +53,7 @@ module.exports.getUsers = async (req, res, next) => {
 module.exports.getUserById = async (req, res, next) => {
   try {
     const { instanceUser } = req;
-    const user = _.omit(instanceUser.get(), ["password"]);
+    const user = omitFields(instanceUser.get(), ["password"]);
     res.status(200).send({ data: user });
   } catch (error) {
     next(error);
@@ -56,7 +64,7 @@ module.exports.getUserById = async (req, res, next) => {
 module.exports.deleteUserById = async (req, res, next) => {
   try {
     const { instanceUser } = req;
-    const userPrepare = _.omit(instanceUser.get(), ["password"]);
+    const userPrepare = omitFields(instanceUser.get(), ["password"]);
     await instanceUser.destroy();
     res.status(200).send({ data: userPrepare });
   } catch (error) {
@@ -73,7 +81,7 @@ module.exports.updateUser = async (req, res, next) => {
     }
 
     const updatedUser = await instanceUser.update(body, { returning: true });
-    const userPrepare = _.omit(updatedUser.get(), ["password"]);
+    const userPrepare = omitFields(updatedUser.get(), ["password"]);
 
     res.status(200).send({ data: userPrepare });
   } catch (error) {
